@@ -1,6 +1,6 @@
-# app
+# Inicialización del proyecto
 
-## Project setup
+## Para realizar la instalación ejecute
 ```
 npm install
 ```
