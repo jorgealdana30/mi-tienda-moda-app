@@ -11,19 +11,20 @@
                         tu asesora independiente.</h3>
                     <v-text-field
                             dark
+                            type="text"
                             v-model="telefono"
                             label="Telefono"
                             outlined
                             clearable
-                            type="text"
-                            v-on:keyup="login"
+                            v-on:keyup=login
                             color="white"
                             class="telefonoInput mt-6"
                             maxlength="12"
                     ></v-text-field>
                 </v-card-text>
                 <v-card-actions>
-                    <v-progress-circular class="loading" indeterminate color="white"></v-progress-circular>
+                    <v-progress-circular v-if="loadingLogin" class="loading" indeterminate
+                                         color="white"></v-progress-circular>
                 </v-card-actions>
             </v-card>
         </v-content>
@@ -31,22 +32,39 @@
 </template>
 
 <script>
+    import axios from 'axios'
+
     export default {
         name: "Login",
         data() {
             return {
-                telefono: ''
+                telefono: null,
+                loadingLogin: false
             }
+        },
+        mounted() {
+
         },
         methods: {
             login() {
-                this.telefono = (this.formatNumber(this.telefono.replace(/\s+/g, '')));
-                console.log(this.telefono)
+                this.telefono = (this.formatNumber(this.telefono));
+                if (this.telefono.length === 12) {
+                    this.loadingLogin = true;
+                    let data = {
+                        mobilephone: this.telefono.replace(/\s+/g, '')
+                    };
+                    axios.post('https://api.tissini.app/api/v1/login/client', data).then(response => {
+                        localStorage.setItem('customer', JSON.stringify(response.data.customer));
+                        this.loadingLogin = false;
+                    });
+
+                }
             },
             formatNumber(value) {
-                let number = value.replace(/D/g, '');
+                let number = value.replace(/\D/g, '');
                 const match = number.match(/^(\d{1,3})(\d{0,3})(\d{0,4})(\d{0,4})$/);
                 if (match) {
+                    console.log(match);
                     number = `${match[1]}${match[2] ? ' ' : ''}${match[2]}${match[3] ? ' ' : ''}${match[3]}${match[4] ? ' x' : ''}${match[4]}`;
                 }
                 return number;
