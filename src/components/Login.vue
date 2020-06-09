@@ -1,5 +1,36 @@
 <template>
-    
+    <v-app class="background">
+        <v-content>
+            <v-card color="transparent" class="containerLogin d-flex flex-column align-center">
+                <v-card-title>
+                    <v-img src="../assets/logo.c752bf8f.png"></v-img>
+                </v-card-title>
+                <v-card-text class="white--text">
+                    <v-row>
+                        <v-col cols="12" sm="12">
+                            <h3 class="monserrat">Ingresa el número de teléfono de tu asesora independiente.</h3>
+                        </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col cols="12" sm="12">
+                            <v-text-field
+                                    dark
+                                    v-model="telefono"
+                                    label="Telefono"
+                                    outlined
+                                    clearable
+                                    color="white"
+                                    class="telefonoInput"
+                            ></v-text-field>
+                        </v-col>
+                    </v-row>
+                </v-card-text>
+                <v-card-actions>
+
+                </v-card-actions>
+            </v-card>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
@@ -9,5 +40,5 @@
 </script>
 
 <style scoped>
-
+    @import "../assets/styles.css";
 </style>

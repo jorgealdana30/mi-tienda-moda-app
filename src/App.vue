@@ -1,5 +1,7 @@
 <template>
-    <router-view name="main"/>
+    <v-app>
+        <router-view name="main"/>
+    </v-app>
 </template>
 
 <script>
@@ -12,3 +14,7 @@
         data: () => ({}),
     };
 </script>
+
+<style>
+    @import "assets/styles.css";
+</style>
