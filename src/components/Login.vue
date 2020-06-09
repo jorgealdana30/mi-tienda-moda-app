@@ -21,6 +21,12 @@
                             class="telefonoInput mt-6"
                             maxlength="12"
                     ></v-text-field>
+                    <v-alert type="success" v-model="success">¡Bienvenida a MiTienda.Moda! serás redigirida en un
+                        momento...
+                    </v-alert>
+                    <v-alert type="error" v-model="errorAlert">Datos incorrectos, por favor, revisalos e intenta
+                        nuevamente.
+                    </v-alert>
                 </v-card-text>
                 <v-card-actions>
                     <v-progress-circular v-if="loadingLogin" class="loading" indeterminate
@@ -39,14 +45,18 @@
         data() {
             return {
                 telefono: null,
-                loadingLogin: false
+                loadingLogin: false,
+                success: false,
+                errorAlert: false
             }
         },
         mounted() {
-
+            if(localStorage.getItem('customer'))
+                this.$router.push({name: 'Board'})
         },
         methods: {
             login() {
+                this.errorAlert = false;
                 this.telefono = (this.formatNumber(this.telefono));
                 if (this.telefono.length === 12) {
                     this.loadingLogin = true;
@@ -56,6 +66,15 @@
                     axios.post('https://api.tissini.app/api/v1/login/client', data).then(response => {
                         localStorage.setItem('customer', JSON.stringify(response.data.customer));
                         this.loadingLogin = false;
+                        this.success = true;
+                        setTimeout(() => {
+                            this.$router.push({name: 'Board'})
+                        }, 2000);
+                    }).catch(error => {
+                        if (error) {
+                            this.errorAlert = true;
+                            this.loadingLogin = false;
+                        }
                     });
 
                 }
@@ -64,7 +83,6 @@
                 let number = value.replace(/\D/g, '');
                 const match = number.match(/^(\d{1,3})(\d{0,3})(\d{0,4})(\d{0,4})$/);
                 if (match) {
-                    console.log(match);
                     number = `${match[1]}${match[2] ? ' ' : ''}${match[2]}${match[3] ? ' ' : ''}${match[3]}${match[4] ? ' x' : ''}${match[4]}`;
                 }
                 return number;
