@@ -57,3 +57,11 @@
 .monserrat{
     font-family: 'Montserrat', sans-serif;
 }
+
+.descriptionLogin{
+    font-weight: bolder;
+}
+
+.loading{
+    margin-top: -24px;
+}

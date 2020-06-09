@@ -5,28 +5,21 @@
                 <v-card-title>
                     <v-img src="../assets/logo.c752bf8f.png" class="mt-12 logo animated fadeIn"></v-img>
                 </v-card-title>
-                <v-card-text class="white--text">
-                    <v-row>
-                        <v-col cols="1" sm="12">
-                            <h3 class="pl-12 pr-12 font-weight-bold text-center monserrat">Ingresa el número de teléfono de tu asesora independiente.</h3>
-                        </v-col>
-                    </v-row>
-                    <v-row class="pl-6 pr-6">
-                        <v-col cols="12" sm="12">
-                            <v-text-field
-                                    dark
-                                    v-model="telefono"
-                                    label="Telefono"
-                                    outlined
-                                    clearable
-                                    color="white"
-                                    class="telefonoInput"
-                            ></v-text-field>
-                        </v-col>
-                    </v-row>
+                <v-card-text class="white--text d-flex justify-center align-center flex-wrap">
+                    <h3 class="descriptionLogin font-weight-bold mt-3 text-center monserrat">Ingresa el número de teléfono <br>de
+                        tu asesora independiente.</h3>
+                    <v-text-field
+                            dark
+                            v-model="telefono"
+                            label="Telefono"
+                            outlined
+                            clearable
+                            color="white"
+                            class="telefonoInput mt-6"
+                    ></v-text-field>
                 </v-card-text>
                 <v-card-actions>
-
+                    <v-progress-circular class="loading" indeterminate color="white"></v-progress-circular>
                 </v-card-actions>
             </v-card>
         </v-content>
