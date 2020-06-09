@@ -3,7 +3,7 @@
         <v-content>
             <v-card color="transparent" class="containerLogin d-flex flex-column align-center">
                 <v-card-title>
-                    <v-img src="../assets/logo.c752bf8f.png"></v-img>
+                    <v-img src="../assets/logo.c752bf8f.png" class="logo animated fadeIn"></v-img>
                 </v-card-title>
                 <v-card-text class="white--text">
                     <v-row>

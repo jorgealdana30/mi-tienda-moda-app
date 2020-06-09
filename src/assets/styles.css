@@ -31,6 +31,22 @@
     }
 }
 
+.logo{
+    width: 200px;
+}
+
+.animated{
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fadeIn{
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
 .containerLogin{
     padding: 20px;
     width: 450px;
