@@ -40,18 +40,16 @@
         },
         methods: {
             login() {
-                this.telefono = (this.formatNumber(this.telefono.replace(/\s+/g, ''), '### ### ####'));
+                this.telefono = (this.formatNumber(this.telefono.replace(/\s+/g, '')));
                 console.log(this.telefono)
             },
-            formatNumber(value, pattern) {
-                let number = value.toString(), i = 0;
-                let x = "";
-                x = value.replace(/D/g,'' );
-                const match = x.match(/^(\d{1,3})(\d{0,3})(\d{0,4})(\d{0,4})$/);
+            formatNumber(value) {
+                let number = value.replace(/D/g, '');
+                const match = number.match(/^(\d{1,3})(\d{0,3})(\d{0,4})(\d{0,4})$/);
                 if (match) {
-                    x = `${match[1]}${match[2] ? ' ' : ''}${match[2]}${match[3] ? ' ' : ''}${match[3]}${match[4] ? ' x' : ''}${match[4]}`;
+                    number = `${match[1]}${match[2] ? ' ' : ''}${match[2]}${match[3] ? ' ' : ''}${match[3]}${match[4] ? ' x' : ''}${match[4]}`;
                 }
-                return x;
+                return number;
             }
         }
     }
