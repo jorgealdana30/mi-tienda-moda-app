@@ -7,12 +7,13 @@
 }
 
 .toolbar-style {
-
+    -webkit-transition: .2s cubic-bezier(.4, 0, .2, 1);
+    transition: .2s cubic-bezier(.4, 0, .2, 1);
 }
 
 .background {
     background: url("./login.34f12655.jpg") 50% !important;
-    -webkit-background-size: cover!important;
+    -webkit-background-size: cover !important;
     -moz-background-size: cover;
     -o-background-size: cover;
     height: 100%;
@@ -23,7 +24,7 @@
 @media (min-width: 475px) {
     .background {
         background: url("./login-desktop.0a0cacb5.jpg") !important;
-        background-size: cover!important;
+        background-size: cover !important;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -32,38 +33,38 @@
     }
 }
 
-.logo{
+.logo {
     width: 200px;
 }
 
-.animated{
+.animated {
     -webkit-animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-duration: 1s;
     animation-fill-mode: both;
 }
 
-.fadeIn{
+.fadeIn {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
 }
 
-.containerLogin{
+.containerLogin {
     padding: 20px;
     width: 450px;
     margin: auto;
     box-shadow: 0 0 0 0 !important;
 }
 
-.monserrat{
+.monserrat {
     font-family: 'Montserrat', sans-serif;
 }
 
-.descriptionLogin{
+.descriptionLogin {
     font-weight: bolder;
 }
 
-.loading{
+.loading {
     margin-top: -24px;
 }
 

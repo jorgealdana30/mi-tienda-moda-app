@@ -76,7 +76,6 @@
                             this.loadingLogin = false;
                         }
                     });
-
                 }
             },
             formatNumber(value) {

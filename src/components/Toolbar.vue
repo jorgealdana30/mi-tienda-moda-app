@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <v-toolbar color="#f06292" class="toolbar-style">
+        <v-toolbar color="primary" class="toolbar-style">
             <v-toolbar-title class="title-toolbar">
                 {{customer.firstname}} {{customer.lastname}}
             </v-toolbar-title>
@@ -22,12 +22,12 @@
         name: "Toolbar",
         data(){
             return {
-                customer: null
+                customer: [],
             }
         },
         mounted() {
             if(localStorage.getItem('customer')){
-                this.customer = JSON.parse(localStorage.getItem('customer'))
+                this.customer = JSON.parse(localStorage.getItem('customer'));
             }else{
                 this.$router.push({name: 'Login'})
             }
