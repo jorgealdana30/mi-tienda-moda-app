@@ -195,7 +195,7 @@ input[type=number] {
 
     .cardPrincipal {
         flex-direction: column;
-        align-content: center;
+        align-items: center;
         justify-content: center;
     }
 
@@ -236,13 +236,17 @@ input[type=number] {
 /*Laptops (L), HD, 4k*/
 @media screen and (min-width: 1440px) {
     .buttonVerMas {
-        left: 85vw;
+        left: 89vw;
         top: -5vh;
     }
 
     .cardPrincipal {
         flex-direction: row;
         justify-content: space-around;
+    }
+
+    .imageBanner {
+        width: 97vw !important;
     }
 
     .buttonsLogOut {

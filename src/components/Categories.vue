@@ -7,24 +7,14 @@
             <v-btn color="black" class="white--text mb-2 buttonVerMas" rounded>Ver Más</v-btn>
         </v-banner>
         <v-card color="primary" class="d-flex flex-wrap cardPrincipal">
-            <v-card class="subCard" style="height: auto" elevation="2">
+            <v-card class="subCard" style="height: auto; width: 100vw" elevation="2">
                 <v-card-title>
                     <span class="montserrat">LINEAS</span>
                 </v-card-title>
-                <v-card-text>
-                    <v-carousel
-                            style="height: 200px"
-                            class="carouselCategorias"
-                            continuous
-                            cycle
-                            hide-delimiter-background
-                            hide-delimiters
-                            show-arrows-on-hover
-                            dark>
-                        <v-carousel-item v-for="item in categories">
-                            <v-img :src="'https://api.tissini.app'+ item.image"></v-img>
-                        </v-carousel-item>
-                    </v-carousel>
+                <v-card-text >
+                    <div class="d-flex overflow-x-auto">
+                        <v-img v-for="item in categories" :src="'https://api.tissini.app'+ item.image"></v-img>
+                    </div>
                 </v-card-text>
             </v-card>
             <v-card class="subCard" elevation="2" v-for="items in sections">
@@ -39,15 +29,20 @@
                             hide-delimiter-background
                             hide-delimiters
                             show-arrows-on-hover
-                            >
+                    >
                         <v-carousel-item v-for="section in items.products">
-                            <v-img :src="'https://api.tissini.app/'+section.image.url" width="25rem" style="margin: 0 auto" height="26rem"></v-img>
+                            <v-img :src="'https://api.tissini.app/'+section.image.url" width="25rem"
+                                   style="margin: 0 auto" height="26rem"></v-img>
                             <v-divider></v-divider>
                             <v-list color="primary">
                                 <v-list-item>
                                     <v-list-item-content>
-                                        <v-list-item-title style="margin-top: -10px!important;" class="mt-1 mb-1 font-weight-bold">{{section.name}}</v-list-item-title>
-                                        <v-list-item-subtitle >{{section.categories.category[0].toUpperCase() + section.categories.category.slice(1)}}</v-list-item-subtitle>
+                                        <v-list-item-title style="margin-top: -10px!important;"
+                                                           class="mt-1 mb-1 font-weight-bold">{{section.name}}
+                                        </v-list-item-title>
+                                        <v-list-item-subtitle>{{section.categories.category[0].toUpperCase() +
+                                            section.categories.category.slice(1)}}
+                                        </v-list-item-subtitle>
                                         <v-list-item-subtitle class="mt-1">${{section.price}}</v-list-item-subtitle>
                                     </v-list-item-content>
                                     <v-list-item-action>
