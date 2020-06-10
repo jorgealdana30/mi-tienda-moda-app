@@ -112,22 +112,6 @@ input[type=number] {
 
 }
 
-
-@media screen and (min-width: 1024px) {
-    .cardPrincipal {
-        padding: 48px !important;
-    }
-
-    .imageBanner {
-        width: 97vw !important;
-    }
-
-    .buttonVerMas {
-        left: 85vw;
-        top: -5vh;
-    }
-}
-
 /*SmartPhones (S))*/
 @media only screen and (max-width: 320px) {
     .cardPrincipal {
@@ -208,11 +192,20 @@ input[type=number] {
     .cardPrincipal {
         flex-direction: row;
         justify-content: space-around;
+        padding: 24px !important;
     }
-
     .subCard {
         width: 45vw;
-        margin: 10px 1px 5px 1px;
+        margin: 1px 1px 5px 1px;
+    }
+
+    .imageBanner {
+        width: 97vw !important;
+    }
+
+    .buttonVerMas {
+        left: 85vw;
+        top: -5vh;
     }
 }
 
