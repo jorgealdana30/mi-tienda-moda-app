@@ -21,6 +21,8 @@
     position: fixed;
 }
 
+
+
 @media (min-width: 475px) {
     .background {
         background: url("./login-desktop.0a0cacb5.jpg") !important;
@@ -77,4 +79,37 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
     -moz-appearance: textfield;
+}
+
+.cardPrincipal{
+    padding: 0;
+}
+
+.subCard {
+    width: 45vw;
+    margin: 10px;
+}
+
+.bannerCategorias{
+    width: 97vw;
+    bottom: 90px;
+}
+
+@media screen and (min-width: 1024px){
+    .cardPrincipal{
+        padding: 48px!important;
+    }
+}
+
+@media screen and (max-width: 475px){
+    .cardPrincipal{
+        flex-direction: column;
+    }
+    .subCard{
+        width: 100vw;
+        margin: 10px 1px 5px 1px;
+    }
+    .bannerCategorias{
+
+    }
 }

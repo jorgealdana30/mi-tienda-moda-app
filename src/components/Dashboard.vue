@@ -16,8 +16,6 @@
         name: "Dashboard",
         components: {
             Toolbar, BottomMenu
-        },
-        mounted() {
         }
     }
 </script>

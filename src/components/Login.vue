@@ -55,7 +55,7 @@
         },
         mounted() {
             if (localStorage.getItem('customer'))
-                this.$router.push({name: 'Dashboard'})
+                this.$router.push({name: 'Categories'})
         },
         methods: {
             login() {

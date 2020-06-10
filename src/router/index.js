@@ -19,12 +19,12 @@ const routes = [
             component: Login
         },
         {
-            path: '/categorias',
+            path: '/dashboard',
             name: "Dashboard",
             component: Dashboard,
             children: [
                 {
-                    path: "",
+                    path: "/categorias",
                     name: 'Categories',
                     component: Categories
                 },

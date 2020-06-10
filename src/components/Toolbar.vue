@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <v-toolbar color="primary" class="toolbar-style">
+        <v-app-bar fixed  color="primary" class="toolbar-style">
             <v-toolbar-title class="title-toolbar">
                 {{customer.firstname}} {{customer.lastname}}
             </v-toolbar-title>
@@ -15,7 +15,7 @@
                     </v-icon>
                 </v-btn>
             </div>
-        </v-toolbar>
+        </v-app-bar>
     </div>
 </template>
 
