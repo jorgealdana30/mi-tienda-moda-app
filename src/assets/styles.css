@@ -112,8 +112,8 @@ input[type=number] {
 
 }
 
-@media screen and (min-width: 1440px) {
-}
+
+
 @media screen and (min-width: 1024px) {
     .cardPrincipal {
         padding: 48px !important;
@@ -123,17 +123,14 @@ input[type=number] {
         width: 97vw !important;
     }
 
-    .buttonBanner {
+    .buttonVerMas {
         left: 85vw;
         top: -5vh;
     }
 }
 
-@media (max-width: 424px) and (min-width: 325px) {
-
-}
-
-@media (max-width: 425px) {
+/*SmartPhones portrait*/
+@media only screen and (max-width: 320px) {
     .cardPrincipal {
         flex-direction: column;
     }
@@ -143,15 +140,49 @@ input[type=number] {
         margin: 10px 1px 5px 1px;
     }
 
-    .buttonBanner {
-        left: 59vw !important;
+    .buttonVerMas {
+        left: 58vw !important;
         top: -5vh;
     }
 }
 
-@media (max-width: 768px) {
-    .buttonBanner {
-        left: 80vw;
+/* Smartphones (M) ----------- */
+@media only screen and (min-width : 375px) and (max-width: 424px) {
+    .cardPrincipal {
+        flex-direction: column;
+    }
+
+    .subCard {
+        width: 100vw;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .buttonVerMas {
+        left: 64vw !important;
+        top: -5vh;
+    }
+}
+
+@media only screen and (min-width : 425px) and (max-width: 767px) {
+    .cardPrincipal {
+        flex-direction: column;
+    }
+
+    .subCard {
+        width: 100vw;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .buttonVerMas {
+        left: 68vw !important;
+        top: -5vh;
+    }
+}
+
+/*Ipads and tablets*/
+@media only screen and (min-device-width: 768px) and (max-width: 1023px) {
+    .buttonVerMas {
+        left: 82vw;
         top: -5vh;
     }
 
@@ -159,4 +190,16 @@ input[type=number] {
         width: 97vw !important;
     }
 
+    .cardPrincipal {
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .buttonVerMas {
+        left: 85vw;
+        top: -5vh;
+    }
 }

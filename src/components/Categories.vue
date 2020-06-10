@@ -4,7 +4,7 @@
             <v-img src="https://mitienda.moda/img/productos-de-entrega-inmediata.e07d1e57.png"
                    class="ma-0 imageBanner align-end">
             </v-img>
-            <v-btn color="black" class="white--text mb-2 buttonBanner" rounded>Ver Más</v-btn>
+            <v-btn color="black" class="white--text mb-2 buttonVerMas" rounded>Ver Más</v-btn>
         </v-banner>
         <v-card color="primary" class="d-flex flex-wrap cardPrincipal">
             <v-card class="subCard" style="height: auto" elevation="2">
@@ -43,10 +43,10 @@
                         <v-carousel-item v-for="section in items.products">
                             <v-img :src="'https://api.tissini.app/'+section.image.url" width="25rem" style="margin: 0 auto" height="26rem"></v-img>
                             <v-divider></v-divider>
-                            <v-list>
+                            <v-list color="primary">
                                 <v-list-item>
                                     <v-list-item-content>
-                                        <v-list-item-title style="margin-top: -10px!important;" class="mt-1 mb-1">{{section.name}}</v-list-item-title>
+                                        <v-list-item-title style="margin-top: -10px!important;" class="mt-1 mb-1 font-weight-bold">{{section.name}}</v-list-item-title>
                                         <v-list-item-subtitle >{{section.categories.category[0].toUpperCase() + section.categories.category.slice(1)}}</v-list-item-subtitle>
                                         <v-list-item-subtitle class="mt-1">${{section.price}}</v-list-item-subtitle>
                                     </v-list-item-content>
