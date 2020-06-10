@@ -95,21 +95,55 @@ input[type=number] {
     bottom: 90px;
 }
 
+.imageBanner{
+    display: flex;
+    align-items: end!important;
+}
+
+.banner{
+    margin-top: 55px;
+    margin-bottom: -50px;
+}
+
+.imageBanner > .v-responsive__content{
+    margin-left: 0!important;
+}
+
 @media screen and (min-width: 1024px){
     .cardPrincipal{
         padding: 48px!important;
     }
+    .imageBanner{
+        width: 97vw!important;
+    }
+    .buttonBanner{
+        left: 85vw;
+        top: -5vh;
+    }
 }
 
-@media screen and (max-width: 475px){
+@media (max-width: 425px) {
     .cardPrincipal{
         flex-direction: column;
     }
+
     .subCard{
         width: 100vw;
         margin: 10px 1px 5px 1px;
     }
-    .bannerCategorias{
 
+    .buttonBanner{
+        left: 59vw!important;
+        top: -5vh;
+    }
+}
+
+@media (max-width: 768px){
+    .buttonBanner{
+        left: 80vw;
+        top: -5vh;
+    }
+    .imageBanner{
+        width: 97vw!important;
     }
 }
