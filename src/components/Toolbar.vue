@@ -29,32 +29,30 @@
                     en la Tienda utiliza las opciones de la parte inferior.
                     </span>
                     <v-spacer></v-spacer>
-                    <div class="d-flex flex-column align-start" style="margin-bottom: -20px;">
-                        <v-btn text :to="{name: 'Categories'}" class="mt-1 backgroundButton"
-                               style="opacity: 1; background-position-y: 10%!important;">
+                    <div class="buttonsLogOut" style="margin-bottom: -20px;">
+                        <v-btn text color="primary" @click="logoutAlert = false" :to="{name: 'Categories'}"
+                               class="mt-1">
                             <v-icon color="primary">
                                 mdi-home-outline
                             </v-icon>
                             <span class="black--text">Categorias</span>
                         </v-btn>
-                        <v-btn text :to="{name: 'Categories'}" class="mt-1 backgroundButton"
-                               style="background-position-y: 18%!important;">
+                        <v-btn text color="primary" @click="logoutAlert = false" :to="{name: 'Catalogue'}" class="mt-1">
                             <v-icon color="primary">
                                 mdi-badge-account-outline
                             </v-icon>
                             <span class="black--text">Catalogo</span>
                         </v-btn>
-                        <v-btn text :to="{name: 'Categories'}" class="mt-1 backgroundButton"
-                               style="background-position-y: 26%!important;">
+                        <v-btn text color="primary" @click="logoutAlert = false" :to="{name: 'Cart'}" class="mt-1">
                             <v-icon color="primary">
                                 mdi-cart-outline
                             </v-icon>
-                            <span class="black--text"> Carrito</span>
+                            <span class="black--text">Carrito</span>
                         </v-btn>
                     </div>
                 </v-card-text>
                 <v-card-actions class="d-flex justify-end">
-                    <v-btn color="primary" text>
+                    <v-btn color="primary" text @click="logout">
                         Salir de la tienda
                     </v-btn>
                     <v-btn color="primary" text @click="logoutAlert = !logoutAlert">
@@ -80,6 +78,12 @@
                 this.customer = JSON.parse(localStorage.getItem('customer'));
             } else {
                 this.$router.push({name: 'Categories'})
+            }
+        },
+        methods: {
+            logout() {
+                localStorage.clear();
+                this.$router.push({name: 'Login'})
             }
         }
     }
