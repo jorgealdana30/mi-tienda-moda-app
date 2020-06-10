@@ -22,7 +22,6 @@
 }
 
 
-
 @media (min-width: 475px) {
     .background {
         background: url("./login-desktop.0a0cacb5.jpg") !important;
@@ -81,7 +80,7 @@ input[type=number] {
     -moz-appearance: textfield;
 }
 
-.cardPrincipal{
+.cardPrincipal {
     padding: 0;
 }
 
@@ -90,60 +89,74 @@ input[type=number] {
     margin: 10px;
 }
 
-.bannerCategorias{
+.bannerCategorias {
     width: 97vw;
     bottom: 90px;
 }
 
-.imageBanner{
+.imageBanner {
     display: flex;
-    align-items: end!important;
+    align-items: end !important;
 }
 
-.banner{
+.banner {
     margin-top: 55px;
     margin-bottom: -50px;
 }
 
-.imageBanner > .v-responsive__content{
-    margin-left: 0!important;
+.imageBanner > .v-responsive__content {
+    margin-left: 0 !important;
 }
 
-@media screen and (min-width: 1024px){
-    .cardPrincipal{
-        padding: 48px!important;
+.carouselCategorias {
+
+}
+
+@media screen and (min-width: 1440px) {
+}
+@media screen and (min-width: 1024px) {
+    .cardPrincipal {
+        padding: 48px !important;
     }
-    .imageBanner{
-        width: 97vw!important;
+
+    .imageBanner {
+        width: 97vw !important;
     }
-    .buttonBanner{
+
+    .buttonBanner {
         left: 85vw;
         top: -5vh;
     }
 }
 
+@media (max-width: 424px) and (min-width: 325px) {
+
+}
+
 @media (max-width: 425px) {
-    .cardPrincipal{
+    .cardPrincipal {
         flex-direction: column;
     }
 
-    .subCard{
+    .subCard {
         width: 100vw;
         margin: 10px 1px 5px 1px;
     }
 
-    .buttonBanner{
-        left: 59vw!important;
+    .buttonBanner {
+        left: 59vw !important;
         top: -5vh;
     }
 }
 
-@media (max-width: 768px){
-    .buttonBanner{
+@media (max-width: 768px) {
+    .buttonBanner {
         left: 80vw;
         top: -5vh;
     }
-    .imageBanner{
-        width: 97vw!important;
+
+    .imageBanner {
+        width: 97vw !important;
     }
+
 }
