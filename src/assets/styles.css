@@ -128,7 +128,7 @@ input[type=number] {
     }
 }
 
-/*SmartPhones portrait*/
+/*SmartPhones (S))*/
 @media only screen and (max-width: 320px) {
     .cardPrincipal {
         flex-direction: column;
@@ -162,6 +162,8 @@ input[type=number] {
     }
 }
 
+/*Smartphone (L)*/
+
 @media only screen and (min-width: 425px) and (max-width: 767px) {
     .cardPrincipal {
         flex-direction: column;
@@ -178,7 +180,7 @@ input[type=number] {
     }
 }
 
-/*Ipads and tablets*/
+/*iPads and tablets*/
 @media only screen and (min-device-width: 768px) and (max-width: 1023px) {
     .buttonVerMas {
         left: 82vw;
@@ -201,6 +203,7 @@ input[type=number] {
     }
 }
 
+/*Laptops (S)*/
 @media only screen and (min-device-width: 1024px) and (max-width: 1439px) {
     .cardPrincipal {
         flex-direction: row;
@@ -213,6 +216,7 @@ input[type=number] {
     }
 }
 
+/*Laptops (L), HD, 4k*/
 @media screen and (min-width: 1440px) {
     .buttonVerMas {
         left: 85vw;
