@@ -6,12 +6,14 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <div class="d-flex justify-space-around">
-                <v-icon class="pr-5" color="white">
-                    mdi-phone
-                </v-icon>
-                <v-icon class="pr-2" color="white">
-                    mdi-login
-                </v-icon>
+                <v-btn icon class="buttonIcon" text href="tel:786-547-0213">
+                    <v-icon color="white">mdi-phone</v-icon>
+                </v-btn>
+                <v-btn icon text @click="logout">
+                    <v-icon color="white">
+                        mdi-login
+                    </v-icon>
+                </v-btn>
             </div>
         </v-toolbar>
     </div>
@@ -20,16 +22,16 @@
 <script>
     export default {
         name: "Toolbar",
-        data(){
+        data() {
             return {
                 customer: [],
             }
         },
         mounted() {
-            if(localStorage.getItem('customer')){
+            if (localStorage.getItem('customer')) {
                 this.customer = JSON.parse(localStorage.getItem('customer'));
-            }else{
-                this.$router.push({name: 'Login'})
+            } else {
+                this.$router.push({name: 'Categories'})
             }
         }
     }

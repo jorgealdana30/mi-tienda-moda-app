@@ -1,22 +1,16 @@
 <template>
     <div id="app">
-        
+        <h1>Catalogo</h1>
     </div>
 </template>
 
 <script>
     import Toolbar from "./Toolbar";
     import BottomMenu from "./BottomMenu";
-
     export default {
-        name: "Categories",
-        components: {
+        name: "Catalogue",
+        components:{
             Toolbar, BottomMenu
-        },
-        data() {
-            return {
-                customer: [],
-            }
         },
         mounted() {
             if (!localStorage.getItem('customer')){
@@ -27,5 +21,5 @@
 </script>
 
 <style scoped>
-    @import "../assets/styles.css";
+
 </style>

@@ -1,23 +1,46 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../components/Login'
-import Board from "../components/Board";
+import Categories from "../components/Categories";
+import Catalogue from "../components/Catalogue";
+import Cart from "../components/Cart";
+import Dashboard from "../components/Dashboard";
 
 Vue.use(VueRouter);
 
 const routes = [
-    {
-        path: '/',
-        name: 'Login',
-        components: {main: Login}
-    },
-    {
-        path: '/dashboard',
-        name: 'Board',
-        components: {main: Board}
-    }
+        {
+            path: '*',
+            redirect: '/'
+        },
+        {
+            path:'/',
+            name: 'Login',
+            component: Login
+        },
+        {
+            path: '/dashboard',
+            name: "Dashboard",
+            component: Dashboard,
+            children: [
+                {
+                    path: "/categorias",
+                    name: 'Categories',
+                    component: Categories
+                },
+                {
+                    path: '/catalogo',
+                    name: "Catalogue",
+                    component: Catalogue
 
-];
+                }, {
+                    path: '/carrito',
+                    name: "Cart",
+                    component: Cart
+                }]
+        }
+    ]
+;
 
 const router = new VueRouter({
     mode: 'history',

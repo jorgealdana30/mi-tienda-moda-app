@@ -1,12 +1,15 @@
 <template>
     <v-app class="background">
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
         <v-content class="d-flex align-center mt-3">
             <v-card color="transparent" class="mt-12 containerLogin d-flex flex-column align-center">
                 <v-card-title>
                     <v-img src="../assets/logo.c752bf8f.png" class="mt-12 logo animated fadeIn"></v-img>
                 </v-card-title>
                 <v-card-text class="white--text d-flex justify-center align-center flex-wrap">
-                    <h3 class="descriptionLogin font-weight-bold mt-3 text-center monserrat">Ingresa el número de
+                    <h3 class="descriptionLogin font-weight-bold mt-3 text-center montserrat">Ingresa el número de
                         teléfono <br>de
                         tu asesora independiente.</h3>
                     <v-text-field
@@ -51,8 +54,8 @@
             }
         },
         mounted() {
-            if(localStorage.getItem('customer'))
-                this.$router.push({name: 'Board'})
+            if (localStorage.getItem('customer'))
+                this.$router.push({name: 'Dashboard'})
         },
         methods: {
             login() {
@@ -68,7 +71,7 @@
                         this.loadingLogin = false;
                         this.success = true;
                         setTimeout(() => {
-                            this.$router.push({name: 'Board'})
+                            this.$router.push({name: 'Categories'})
                         }, 2000);
                     }).catch(error => {
                         if (error) {
