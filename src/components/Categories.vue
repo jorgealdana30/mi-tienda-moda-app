@@ -7,9 +7,9 @@
             <v-btn color="black" class="white--text mb-2 buttonBanner" rounded>Ver Más</v-btn>
         </v-banner>
         <v-card color="primary" class="d-flex flex-wrap cardPrincipal">
-            <v-card v-for="title in categories" class="subCard" elevation="2">
+            <v-card v-for="item in categories" class="subCard" elevation="2">
                 <v-card-title>
-                    <span class="montserrat">{{title}}</span>
+                    <v-img :src="'https://api.tissini.app'+ item.image"></v-img>
                 </v-card-title>
                 <v-card-text>
                     <v-carousel hide-delimiter-background
@@ -35,12 +35,24 @@
         data() {
             return {
                 customer: [],
-                categories: ['Ventas', 'Jeans', 'Recomendado', 'Temporada']
+                categories: null
             }
         },
         mounted() {
             if (!localStorage.getItem('customer')) {
                 this.$router.push({name: 'Login'})
+            }
+
+            this.loadInfo();
+        },
+        methods: {
+            loadInfo() {
+                axios.get('https://api.tissini.app/api/v2/categories', this.customer.id).then(response => {
+                    this.categories = (response.data);
+                    console.log(this.categories)
+                }).catch(error => {
+                    console.log(error)
+                })
             }
         }
     }
