@@ -116,10 +116,6 @@ input[type=number] {
     margin-left: 0 !important;
 }
 
-.carouselCategorias {
-
-}
-
 .buttonsLogOut {
     display: flex;
     flex-direction: column;
@@ -129,6 +125,10 @@ input[type=number] {
 @media only screen and (max-width: 320px) {
     .cardPrincipal {
         flex-direction: column;
+    }
+
+    .carouselCat{
+        height: 9rem!important;
     }
 
     .subCard {
@@ -146,6 +146,10 @@ input[type=number] {
 @media only screen and (min-width: 375px) and (max-width: 424px) {
     .cardPrincipal {
         flex-direction: column;
+    }
+
+    .carouselCat{
+        height: 10.5rem!important;
     }
 
     .subCard {
@@ -171,6 +175,10 @@ input[type=number] {
         margin: 10px 1px 5px 1px;
     }
 
+    .carouselCat{
+        height: 12rem!important;
+    }
+
     .buttonVerMas {
         left: 68vw !important;
         top: -5vh;
@@ -182,6 +190,10 @@ input[type=number] {
     .buttonVerMas {
         left: 82vw;
         top: -5vh;
+    }
+
+    .carouselCat{
+        height: 23rem!important;
     }
 
     .imageBanner {
@@ -227,6 +239,10 @@ input[type=number] {
         top: -5vh;
     }
 
+    .carouselCat{
+        height: 26rem!important;
+    }
+
     .buttonsLogOut {
         flex-direction: row;
         justify-content: space-evenly;
@@ -247,6 +263,10 @@ input[type=number] {
 
     .imageBanner {
         width: 97vw !important;
+    }
+
+    .carouselCat{
+        height: 35rem!important;
     }
 
     .buttonsLogOut {

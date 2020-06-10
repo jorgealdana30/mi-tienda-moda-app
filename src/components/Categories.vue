@@ -11,9 +11,10 @@
                 <v-card-title>
                     <span class="montserrat">LINEAS</span>
                 </v-card-title>
-                <v-card-text >
+                <v-card-text>
                     <div class="d-flex overflow-x-auto">
-                        <v-img v-for="item in categories" :src="'https://api.tissini.app'+ item.image"></v-img>
+                        <v-img v-for="item in categories" :src="'https://api.tissini.app'+ item.image"
+                               max-width="80vw"></v-img>
                     </div>
                 </v-card-text>
             </v-card>
@@ -23,7 +24,6 @@
                 </v-card-title>
                 <v-card-text>
                     <v-carousel
-                            class="carouselCategorias"
                             continuous
                             cycle
                             hide-delimiter-background
