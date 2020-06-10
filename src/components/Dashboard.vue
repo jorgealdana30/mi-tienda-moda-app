@@ -18,7 +18,6 @@
             Toolbar, BottomMenu
         },
         mounted() {
-            this.$router.push({name: 'Categories'})
         }
     }
 </script>

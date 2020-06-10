@@ -16,7 +16,7 @@
                             dark
                             type="text"
                             v-model="telefono"
-                            label="Telefono"
+                            label="Teléfono"
                             outlined
                             clearable
                             v-on:keyup=login
