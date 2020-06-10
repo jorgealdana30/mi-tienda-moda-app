@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
+
+.title-toolbar {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    font-weight: bold;
+}
+
+.toolbar-style {
+    -webkit-transition: .2s cubic-bezier(.4, 0, .2, 1);
+    transition: .2s cubic-bezier(.4, 0, .2, 1);
+}
+
+.background {
+    background: url("./login.34f12655.jpg") 50% !important;
+    -webkit-background-size: cover !important;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
+
+.backgroundButton {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    opacity: 1;
+    background: white !important;
+}
+
+@media (min-width: 475px) {
+    .background {
+        background: url("./login-desktop.0a0cacb5.jpg") !important;
+        background-size: cover !important;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.logo {
+    width: 200px;
+}
+
+.animated {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+}
+
+.containerLogin {
+    padding: 20px;
+    width: 450px;
+    margin: auto;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.descriptionLogin {
+    font-weight: bolder;
+}
+
+.loading {
+    margin-top: -24px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.cardPrincipal {
+    padding: 0;
+}
+
+.subCard {
+    width: 45vw;
+    margin: 10px;
+}
+
+.bannerCategorias {
+    width: 97vw;
+    bottom: 90px;
+}
+
+.imageBanner {
+    display: flex;
+    align-items: end !important;
+}
+
+.banner {
+    margin-top: 55px;
+    margin-bottom: -50px;
+}
+
+.imageBanner > .v-responsive__content {
+    margin-left: 0 !important;
+}
+
+.carouselCategorias {
+
+}
+
+.buttonsLogOut {
+    display: flex;
+    flex-direction: column;
+}
+
+/*SmartPhones (S))*/
+@media only screen and (max-width: 320px) {
+    .cardPrincipal {
+        flex-direction: column;
+    }
+
+    .subCard {
+        width: 100vw;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .buttonVerMas {
+        left: 58vw !important;
+        top: -5vh;
+    }
+}
+
+/* Smartphones (M) ----------- */
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+    .cardPrincipal {
+        flex-direction: column;
+    }
+
+    .subCard {
+        width: 100vw;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .buttonVerMas {
+        left: 64vw !important;
+        top: -5vh;
+    }
+}
+
+/*Smartphone (L)*/
+
+@media only screen and (min-width: 425px) and (max-width: 767px) {
+    .cardPrincipal {
+        flex-direction: column;
+    }
+
+    .subCard {
+        width: 100vw;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .buttonVerMas {
+        left: 68vw !important;
+        top: -5vh;
+    }
+}
+
+/*iPads and tablets*/
+@media only screen and (min-device-width: 768px) and (max-width: 1023px) {
+    .buttonVerMas {
+        left: 82vw;
+        top: -5vh;
+    }
+
+    .imageBanner {
+        width: 97vw !important;
+    }
+
+    .subCard {
+        width: 95vw;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .cardPrincipal {
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+    }
+
+    .buttonsLogOut {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}
+
+/*Laptops (S)*/
+@media only screen and (min-device-width: 1024px) and (max-width: 1439px) {
+    .cardPrincipal {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 24px !important;
+    }
+
+    .subCard {
+        width: 45vw;
+        margin: 1px 1px 5px 1px;
+    }
+
+    .imageBanner {
+        width: 97vw !important;
+    }
+
+    .buttonVerMas {
+        left: 85vw;
+        top: -5vh;
+    }
+
+    .buttonsLogOut {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
+
+/*Laptops (L), HD, 4k*/
+@media screen and (min-width: 1440px) {
+    .buttonVerMas {
+        left: 85vw;
+        top: -5vh;
+    }
+
+    .cardPrincipal {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .buttonsLogOut {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+}
