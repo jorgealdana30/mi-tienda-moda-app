@@ -77,6 +77,7 @@
                 select: null,
                 products: [],
                 tab: null,
+                category: []
             }
         },
         mounted() {
@@ -86,6 +87,10 @@
             if (localStorage.getItem('categories')) {
                 this.products = JSON.parse(localStorage.getItem('categories'))
             }
+        },
+        activated() {
+            this.category = this.$route.params.category;
+            localStorage.setItem('categorySelected', JSON.stringify(this.category));
         },
         methods: {},
         model(val) {
@@ -98,8 +103,8 @@
                 this.loading = true;
                 setTimeout(() => {
                     let json = JSON.parse(localStorage.getItem('categories'));
-                    for(let i in json){
-                        for (let j in json[i].products){
+                    for (let i in json) {
+                        for (let j in json[i].products) {
                             this.items.push(json[i].products[j])
                         }
                     }

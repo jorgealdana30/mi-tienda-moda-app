@@ -13,8 +13,10 @@
                 </v-card-title>
                 <v-card-text>
                     <div class="d-flex overflow-x-auto">
-                        <v-img v-for="item in categories" :src="'https://api.tissini.app'+ item.image"
-                               max-width="80vw"></v-img>
+                        <div v-for="item in categories" @click="sendCategory(item)">
+                            <v-img :src="'https://api.tissini.app'+ item.image"
+                                   max-width="80vw"></v-img>
+                        </div>
                     </div>
                 </v-card-text>
             </v-card>
@@ -61,6 +63,7 @@
     import Toolbar from "./Toolbar";
     import BottomMenu from "./BottomMenu";
     import axios from 'axios'
+    import vuex from 'vuex'
 
     export default {
         name: "Categories",
@@ -83,6 +86,9 @@
             this.loadSections();
         },
         methods: {
+            sendCategory(item){
+                this.$router.push({ name: 'Catalogue', params: { category: item }})
+            },
             loadInfoCategories() {
                 axios.get('https://api.tissini.app/api/v2/categories').then(response => {
                     this.categories = (response.data);
