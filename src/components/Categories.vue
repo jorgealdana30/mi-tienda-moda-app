@@ -87,7 +87,8 @@
         },
         methods: {
             sendCategory(item){
-                this.$router.push({ name: 'Catalogue', params: { category: item }})
+                localStorage.setItem('categorySelected', JSON.stringify(item));
+                this.$router.push({ name: 'Catalogue'})
             },
             loadInfoCategories() {
                 axios.get('https://api.tissini.app/api/v2/categories').then(response => {

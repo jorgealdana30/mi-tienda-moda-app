@@ -46,7 +46,7 @@
                                 tile
                                 class="headline font-weight-light white--text"
                         >
-                            <v-img :src="'http://api.tissini.app/'+ item.image.url"></v-img>
+                            <v-img :src="'http://api.tissini.app/'+ item.images[0].url"></v-img>
                         </v-list-item-avatar>
                         <v-list-item-content class="ma-2">
                             <v-list-item-title v-text="item.name"></v-list-item-title>
@@ -89,8 +89,8 @@
             }
         },
         activated() {
-            this.category = this.$route.params.category;
-            localStorage.setItem('categorySelected', JSON.stringify(this.category));
+            this.category = JSON.parse(localStorage.getItem('categorySelected'));
+            this.items = []
         },
         methods: {},
         model(val) {
@@ -101,16 +101,16 @@
             search(val) {
                 if (this.items.length > 0) return;
                 this.loading = true;
-                setTimeout(() => {
-                    let json = JSON.parse(localStorage.getItem('categories'));
-                    for (let i in json) {
-                        for (let j in json[i].products) {
-                            this.items.push(json[i].products[j])
-                        }
+                console.log(this.category)
+                axios.get('https://api.tissini.app/api/v2/categories/' + this.category.id + '/products').then(response => {
+                        this.items = response.data.products;
+                        this.loading = false
                     }
-                    this.loading = false
+                )
+                /*setTimeout(() => {
 
-                }, 500)
+
+                }, 500)*/
             }
         }
     }
