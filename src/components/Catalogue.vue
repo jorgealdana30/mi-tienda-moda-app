@@ -47,7 +47,7 @@
                                             </v-list-item-subtitle>
                                         </v-list-item-content>
                                         <v-list-item-action>
-                                            <v-btn rounded>
+                                            <v-btn rounded @click="saveToCart(item)">
                                                 <v-icon>mdi-cart-plus</v-icon>
                                                 Agregar
                                             </v-btn>
@@ -84,10 +84,12 @@
                 transition: 'fade-transition',
                 size: 0,
                 hasCategory: true,
+                cartItems: []
             }
         },
         activated() {
             this.category = JSON.parse(localStorage.getItem('categorySelected'));
+            this.cartItems = JSON.parse(localStorage.getItem('cart'));
             this.loadProducts();
         },
         deactivated() {
@@ -108,6 +110,18 @@
                         this.loading = false
                     }
                 );
+            },
+            saveToCart(product) {
+                if (localStorage.getItem('cart')) {
+                    let json = [];
+                    json = JSON.parse(localStorage.getItem('cart'));
+                    json.push(product);
+                    localStorage.setItem('cart', JSON.stringify(json));
+                } else {
+                    let json = [];
+                    json.push(product);
+                    localStorage.setItem('cart', JSON.stringify(json));
+                }
             }
         }
     }
