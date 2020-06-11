@@ -94,7 +94,6 @@
             search(val) {
                 if (this.items.length > 0) return;
                 this.loading = true;
-                console.log(this.category)
                 axios.get('https://api.tissini.app/api/v2/categories/' + this.category.id + '/products').then(response => {
                         this.items = response.data.products;
                         this.loading = false

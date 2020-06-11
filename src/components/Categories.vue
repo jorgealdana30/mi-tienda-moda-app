@@ -12,12 +12,12 @@
                     <span class="montserrat">LINEAS</span>
                 </v-card-title>
                 <v-card-text>
-                    <div class="d-flex overflow-x-auto">
-                        <div v-for="item in categories" @click="sendCategory(item)">
+                    <v-carousel cycle continuous height="auto" hide-delimiter-background hide-delimiters show-arrows-on-hover>
+                        <v-carousel-item v-for="item in categories" @click="sendCategory(item)">
                             <v-img :src="'https://api.tissini.app'+ item.image"
-                                   max-width="80vw"></v-img>
-                        </div>
-                    </div>
+                                   max-width="90vw"></v-img>
+                        </v-carousel-item>
+                    </v-carousel>
                 </v-card-text>
             </v-card>
             <v-card class="subCard" elevation="2" v-for="items in sections">
@@ -48,6 +48,7 @@
                                         <v-list-item-subtitle class="mt-1">${{section.price}}</v-list-item-subtitle>
                                     </v-list-item-content>
                                     <v-list-item-action>
+                                        <v-btn rounded color="white" class="black--text"><v-icon>mdi-cart-plus</v-icon>Agregar</v-btn>
                                     </v-list-item-action>
                                 </v-list-item>
                             </v-list>
