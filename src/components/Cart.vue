@@ -7,7 +7,7 @@
             </div>
             <div v-if="!cartEmpty">
                 <div v-for="items in cart">
-                    {{items}}
+                   {{items.id}} {{items.name}} {{items.price}}
                 </div>
             </div>
         </v-card>

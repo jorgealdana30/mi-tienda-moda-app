@@ -27,7 +27,6 @@
                         min-height="200" :transition="transition" v-model="isActive">
                     <v-skeleton-loader :transition="transition" :loading="loading" type="card">
                         <div>
-
                             <v-card-title>
                                 <v-carousel height="auto" :show-arrows="Object.keys(item.images).length>1">
                                     <v-carousel-item v-for="photos in item.images">
@@ -59,6 +58,34 @@
                     </v-skeleton-loader>
                 </v-lazy>
             </v-card>
+            <v-dialog v-model="selectVariant" persistent>
+                <v-card>
+                    <v-card-title class="mb-1 pb-4" style="background-color: #f06292">
+                        <v-btn icon text @click="selectVariant = !selectVariant">
+                            <v-icon color="white">
+                                mdi-close
+                            </v-icon>
+                        </v-btn>
+                        <v-toolbar-title>
+                            <span class="white--text ml-4">Agregar Producto</span>
+                        </v-toolbar-title>
+                    </v-card-title>
+                    <v-card-text>
+                        <div class="d-flex flex-column">
+                            <span class="montserrat font-weight-bold" style="color: #f06292;">Selecciona el Tamaño</span>
+                            <div class="d-flex justify-center flex-row">
+                                <v-select :items="variants">
+                                </v-select>
+                            </div>
+                        </div>
+                        <div>
+                            <span class="montserrat font-weight-bold" style="color: #f06292;">Selecciona la cantidad</span>
+                            <v-select :items="selectItems">
+                            </v-select>
+                        </div>
+                    </v-card-text>
+                </v-card>
+            </v-dialog>
         </v-card>
     </div>
 </template>
@@ -82,19 +109,32 @@
                 categoryName: '',
                 loading: true,
                 transition: 'fade-transition',
-                size: 0,
+                size: '',
                 hasCategory: true,
-                cartItems: []
+                selectVariant: false,
+                variants: [],
+                cantidad: 0,
+                productSelected: null
             }
         },
         activated() {
             this.category = JSON.parse(localStorage.getItem('categorySelected'));
-            this.cartItems = JSON.parse(localStorage.getItem('cart'));
             this.loadProducts();
         },
         deactivated() {
             this.products = []
         },
+        computed:{
+            selectItems(){
+                let json = [];
+                for (let i in this.cantidad){
+                    json.push(i)
+                }
+                console.log(json)
+                return json
+            }
+        },
+
         methods: {
             loadProducts() {
                 let id = '';
@@ -112,7 +152,11 @@
                 );
             },
             saveToCart(product) {
-                if (localStorage.getItem('cart')) {
+                this.selectVariant = true;
+                for(let i in product.variants){
+                    this.variants.push(product.variants[i].size);
+                }
+                /*if (localStorage.getItem('cart')) {
                     let json = [];
                     json = JSON.parse(localStorage.getItem('cart'));
                     json.push(product);
@@ -121,8 +165,8 @@
                     let json = [];
                     json.push(product);
                     localStorage.setItem('cart', JSON.stringify(json));
-                }
-            }
+                }*/
+            },
         }
     }
 </script>
