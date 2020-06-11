@@ -1,14 +1,13 @@
 <template>
     <div id="app">
-        <v-card class="cardPrincipal banner">
-            <div class="d-flex flex-row align-center">
-                <v-btn icon color="primary">
+        <v-card class="cardPrincipal banner" height="100vh" color="primary">
+            <div class="d-flex flex-row align-center white">
+                <v-btn icon color="primary" class="ml-2" :to="{name: 'Categories'}">
                     <v-icon>
                         mdi-arrow-left
                     </v-icon>
                 </v-btn>
                 <v-autocomplete
-                        v-model="model"
                         :items="items"
                         :loading="loading"
                         :search-input.sync="search"
@@ -18,14 +17,15 @@
                         hide-selected
                         item-text="name"
                         item-value="symbol"
-                        label="Search for a coin..."
+                        label="Buscar un producto..."
+                        flat
+                        prepend-inner-icon="mdi-magnify"
                         solo
                 >
                     <template v-slot:no-data>
                         <v-list-item>
                             <v-list-item-title>
-                                Search for your favorite
-                                <strong>Cryptocurrency</strong>
+                                Escribe un producto para comenzar a buscar
                             </v-list-item-title>
                         </v-list-item>
                     </template>
@@ -43,18 +43,15 @@
                     </template>
                     <template v-slot:item="{ item }">
                         <v-list-item-avatar
-                                color="indigo"
+                                tile
                                 class="headline font-weight-light white--text"
                         >
-                            {{ item.name.charAt(0) }}
+                            <v-img :src="'http://api.tissini.app/'+ item.image.url"></v-img>
                         </v-list-item-avatar>
-                        <v-list-item-content>
+                        <v-list-item-content class="ma-2">
                             <v-list-item-title v-text="item.name"></v-list-item-title>
-                            <v-list-item-subtitle v-text="item.symbol"></v-list-item-subtitle>
+                            <v-list-item-subtitle v-text="item.reference"></v-list-item-subtitle>
                         </v-list-item-content>
-                        <v-list-item-action>
-                            <v-icon>mdi-coin</v-icon>
-                        </v-list-item-action>
                     </template>
                 </v-autocomplete>
             </div>
@@ -65,6 +62,7 @@
 <script>
     import Toolbar from "./Toolbar";
     import BottomMenu from "./BottomMenu";
+    import axios from "axios"
 
     export default {
         name: "Catalogue",
@@ -79,7 +77,6 @@
                 select: null,
                 products: [],
                 tab: null,
-                model: null
             }
         },
         mounted() {
@@ -96,10 +93,6 @@
             else this.tab = null
         },
         watch: {
-            model(val) {
-                if (val != null) this.tab = 0;
-                else this.tab = null
-            },
             search(val) {
                 if (this.items.length > 0) return;
                 this.loading = true;
