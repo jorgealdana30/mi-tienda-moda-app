@@ -32,7 +32,7 @@
                             hide-delimiters
                             show-arrows-on-hover
                     >
-                        <v-carousel-item v-for="section in items.products">
+                        <v-carousel-item v-for="section in items.products" @click="sendCategory(section)">
                             <v-img :src="'https://api.tissini.app/'+section.image.url" width="25rem"
                                    style="margin: 0 auto" height="26rem"></v-img>
                             <v-divider></v-divider>

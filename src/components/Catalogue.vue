@@ -2,7 +2,13 @@
     <div id="app">
         <v-card class="cardPrincipal banner mb-0" flat height="auto" color="primary">
             <Autocomplete/>
-            <v-card class="subCard" style="height: auto; width: 100vw" elevation="2">
+            <v-card class="subCard d-flex justify-center" v-if="!hasCategory" style="height: auto; width: 100vw"
+                    elevation="2">
+                <v-card-title>
+                    <span class="montserrat">{{category.categories.name}}</span>
+                </v-card-title>
+            </v-card>
+            <v-card class="subCard" v-if="hasCategory" style="height: auto; width: 100vw" elevation="2">
                 <v-card-title>
                     <span class="montserrat">CATEGORÍAS</span>
                 </v-card-title>
@@ -16,7 +22,7 @@
                     </v-carousel>
                 </v-card-text>
             </v-card>
-            <v-card class="subCard" v-for="item in products" style="height: auto" elevation="2">
+            <v-card class="subCard" ref="table" v-for="item in products" style="height: auto" elevation="2">
                 <v-lazy :options="{threshold: .5}"
                         min-height="200" :transition="transition" v-model="isActive">
                     <v-skeleton-loader :transition="transition" :loading="loading" type="card">
@@ -37,10 +43,14 @@
                                                                class="mt-1 mb-1 white--text font-weight-bold">
                                                 {{item.name}}
                                             </v-list-item-title>
-                                            <v-list-item-subtitle class="mt-1 white--text">${{item.price}}</v-list-item-subtitle>
+                                            <v-list-item-subtitle class="mt-1 white--text">${{item.price}}
+                                            </v-list-item-subtitle>
                                         </v-list-item-content>
                                         <v-list-item-action>
-                                            <v-btn rounded><v-icon>mdi-cart-plus</v-icon>Agregar</v-btn>
+                                            <v-btn rounded>
+                                                <v-icon>mdi-cart-plus</v-icon>
+                                                Agregar
+                                            </v-btn>
                                         </v-list-item-action>
                                     </v-list-item>
                                 </v-list>
@@ -71,7 +81,8 @@
                 isActive: true,
                 loading: true,
                 transition: 'fade-transition',
-                size: 0
+                size: 0,
+                hasCategory: true
             }
         },
         activated() {
@@ -79,17 +90,24 @@
             this.loadProducts();
         },
         deactivated() {
-          this.products = []
+            this.products = []
         },
         methods: {
             loadProducts() {
-                axios.get('https://api.tissini.app/api/v2/categories/' + this.category.id + '/products').then(response => {
+                let id = '';
+                if (this.category.hasOwnProperty('category_id')) {
+                    id = this.category['category_id'];
+                    this.hasCategory = false
+                } else {
+                    id = this.category.id;
+                    this.hasCategory = true
+                }
+                axios.get('https://api.tissini.app/api/v2/categories/' + id + '/products').then(response => {
                         this.products = response.data.products;
-                        setTimeout(() => {
-                            this.loading = false
-                        }, 1000)
+                        this.loading = false
+
                     }
-                )
+                );
             }
         }
     }

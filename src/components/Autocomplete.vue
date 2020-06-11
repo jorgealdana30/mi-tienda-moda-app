@@ -93,8 +93,14 @@
         watch: {
             search(val) {
                 if (this.items.length > 0) return;
+                let id = '';
+                if (this.category.hasOwnProperty('category_id')) {
+                    id = this.category['category_id'];
+                } else {
+                    id = this.category.id;
+                }
                 this.loading = true;
-                axios.get('https://api.tissini.app/api/v2/categories/' + this.category.id + '/products').then(response => {
+                axios.get('https://api.tissini.app/api/v2/categories/' + id + '/products').then(response => {
                         this.items = response.data.products;
                         this.loading = false
                     }
