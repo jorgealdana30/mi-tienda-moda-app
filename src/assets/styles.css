@@ -121,14 +121,22 @@ input[type=number] {
     flex-direction: column;
 }
 
+.cartPanel {
+    width: 100vw;
+    height: 40rem;
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+}
+
 /*SmartPhones (S))*/
 @media only screen and (max-width: 320px) {
     .cardPrincipal {
         flex-direction: column;
     }
 
-    .carouselCat{
-        height: 9rem!important;
+    .carouselCat {
+        height: 9rem !important;
     }
 
     .subCard {
@@ -148,8 +156,8 @@ input[type=number] {
         flex-direction: column;
     }
 
-    .carouselCat{
-        height: 10.5rem!important;
+    .carouselCat {
+        height: 10.5rem !important;
     }
 
     .subCard {
@@ -175,8 +183,8 @@ input[type=number] {
         margin: 10px 1px 5px 1px;
     }
 
-    .carouselCat{
-        height: 12rem!important;
+    .carouselCat {
+        height: 12rem !important;
     }
 
     .buttonVerMas {
@@ -192,8 +200,8 @@ input[type=number] {
         top: -5vh;
     }
 
-    .carouselCat{
-        height: 23rem!important;
+    .carouselCat {
+        height: 23rem !important;
     }
 
     .imageBanner {
@@ -239,8 +247,8 @@ input[type=number] {
         top: -5vh;
     }
 
-    .carouselCat{
-        height: 26rem!important;
+    .carouselCat {
+        height: 26rem !important;
     }
 
     .buttonsLogOut {
@@ -265,8 +273,8 @@ input[type=number] {
         width: 97vw !important;
     }
 
-    .carouselCat{
-        height: 35rem!important;
+    .carouselCat {
+        height: 35rem !important;
     }
 
     .buttonsLogOut {
