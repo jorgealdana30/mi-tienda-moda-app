@@ -2,7 +2,9 @@
     <v-app>
         <Toolbar/>
         <v-content>
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </v-content>
         <BottomMenu/>
     </v-app>

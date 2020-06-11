@@ -93,6 +93,7 @@
             loadSections() {
                 axios.get('https://api.tissini.app/api/v1/categories/sections').then(response => {
                     this.sections = (response.data);
+                    localStorage.setItem('categories', JSON.stringify(this.sections))
                 }).catch(error => {
                     console.log(error)
                 })
