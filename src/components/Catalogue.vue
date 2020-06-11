@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <v-card class="cardPrincipal banner" height="auto" color="primary">
+        <v-card class="cardPrincipal banner mb-0" flat height="auto" color="primary">
             <Autocomplete/>
             <v-card class="subCard" style="height: auto; width: 100vw" elevation="2">
                 <v-card-title>
@@ -77,6 +77,9 @@
         activated() {
             this.category = JSON.parse(localStorage.getItem('categorySelected'));
             this.loadProducts();
+        },
+        deactivated() {
+          this.products = []
         },
         methods: {
             loadProducts() {
