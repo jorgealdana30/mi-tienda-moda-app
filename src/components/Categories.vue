@@ -4,7 +4,7 @@
             <v-img src="https://mitienda.moda/img/productos-de-entrega-inmediata.e07d1e57.png"
                    class="ma-0 imageBanner align-end">
             </v-img>
-            <v-btn color="black" class="white--text mb-2 buttonVerMas" rounded>Ver Más</v-btn>
+            <v-btn color="black" class="white--text mb-2 buttonVerMas" @click="sendMultivendor" rounded>Ver Más</v-btn>
         </v-banner>
         <v-card color="primary" class="d-flex flex-wrap cardPrincipal">
             <v-card class="subCard" style="height: auto; width: 100vw" elevation="2">
@@ -12,7 +12,8 @@
                     <span class="montserrat">LINEAS</span>
                 </v-card-title>
                 <v-card-text>
-                    <v-carousel cycle continuous height="auto" hide-delimiter-background hide-delimiters show-arrows-on-hover>
+                    <v-carousel cycle continuous height="auto" hide-delimiter-background hide-delimiters
+                                show-arrows-on-hover>
                         <v-carousel-item v-for="item in categories" @click="sendCategory(item)">
                             <v-img :src="'https://api.tissini.app'+ item.image"
                                    max-width="90vw"></v-img>
@@ -48,7 +49,10 @@
                                         <v-list-item-subtitle class="mt-1">${{section.price}}</v-list-item-subtitle>
                                     </v-list-item-content>
                                     <v-list-item-action>
-                                        <v-btn rounded color="white" class="black--text"><v-icon>mdi-cart-plus</v-icon>Agregar</v-btn>
+                                        <v-btn rounded color="white" class="black--text">
+                                            <v-icon>mdi-cart-plus</v-icon>
+                                            Agregar
+                                        </v-btn>
                                     </v-list-item-action>
                                 </v-list-item>
                             </v-list>
@@ -82,14 +86,22 @@
         mounted() {
             if (!localStorage.getItem('customer')) {
                 this.$router.push({name: 'Login'})
+            } else {
+                this.customer = JSON.parse(localStorage.getItem('customer'))
             }
             this.loadInfoCategories();
             this.loadSections();
         },
         methods: {
-            sendCategory(item){
+            sendMultivendor() {
+                axios.get('https://api.tissini.app/api/v1/stock/multivendor/' + this.customer.id).then(response => {
+                    localStorage.setItem('entregaInmediata', JSON.stringify(response.data));
+                    this.$router.push({name: 'Catalogue'});
+                })
+            },
+            sendCategory(item) {
                 localStorage.setItem('categorySelected', JSON.stringify(item));
-                this.$router.push({ name: 'Catalogue'})
+                this.$router.push({name: 'Catalogue'})
             },
             loadInfoCategories() {
                 axios.get('https://api.tissini.app/api/v2/categories').then(response => {

@@ -79,10 +79,11 @@
                 category: [],
                 products: [],
                 isActive: true,
+                categoryName: '',
                 loading: true,
                 transition: 'fade-transition',
                 size: 0,
-                hasCategory: true
+                hasCategory: true,
             }
         },
         activated() {
@@ -105,7 +106,6 @@
                 axios.get('https://api.tissini.app/api/v2/categories/' + id + '/products').then(response => {
                         this.products = response.data.products;
                         this.loading = false
-
                     }
                 );
             }
