@@ -25,40 +25,76 @@
                     </v-card-text>
                 </v-card>
                 <div v-infinite-scroll="loadProducts" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
-                    <v-card class="subCard" ref="table" v-for="item in products" style="height: auto" elevation="2">
-                        <v-lazy :options="{threshold: .5}"
-                                min-height="200" :transition="transition" v-model="isActive">
-                            <div>
-                                <v-card-title>
-                                    <v-carousel height="auto" :show-arrows="Object.keys(item.images).length>1">
-                                        <v-carousel-item v-for="photos in item.images">
-                                            <img class="imgCategory" :src="'https://api.tissini.app/'+ photos.url">
-                                        </v-carousel-item>
-                                    </v-carousel>
-                                </v-card-title>
-                                <v-card-text>
-                                    <v-list color="primary">
-                                        <v-list-item>
-                                            <v-list-item-content>
-                                                <v-list-item-title style="margin-top: -10px!important;"
-                                                                   class="mt-1 mb-1 white--text font-weight-bold">
-                                                    {{item.name}}
-                                                </v-list-item-title>
-                                                <v-list-item-subtitle class="mt-1 white--text">${{item.price}}
-                                                </v-list-item-subtitle>
-                                            </v-list-item-content>
-                                            <v-list-item-action>
-                                                <v-btn rounded @click="preCart(item)">
-                                                    <v-icon>mdi-cart-plus</v-icon>
-                                                    Agregar
-                                                </v-btn>
-                                            </v-list-item-action>
-                                        </v-list-item>
-                                    </v-list>
-                                </v-card-text>
-                            </div>
-                        </v-lazy>
-                    </v-card>
+                    <div v-for="item in products">
+                        <v-card class="subCard" ref="table" v-if="Object.keys(item.images).length>1" style="height: auto"
+                                elevation="2">
+                            <v-lazy :options="{threshold: .5}"
+                                    min-height="200" :transition="transition" v-model="isActive">
+                                <div>
+                                    <v-card-title>
+                                        <v-carousel height="auto"
+                                                    :show-arrows="Object.keys(item.images).length>1">
+                                            <v-carousel-item v-for="photos in item.images">
+                                                <img class="imgCategory" :src="'https://api.tissini.app/'+ photos.url">
+                                            </v-carousel-item>
+                                        </v-carousel>
+                                    </v-card-title>
+                                    <v-card-text>
+                                        <v-list color="primary">
+                                            <v-list-item>
+                                                <v-list-item-content>
+                                                    <v-list-item-title style="margin-top: -10px!important;"
+                                                                       class="mt-1 mb-1 white--text font-weight-bold">
+                                                        {{item.name}}
+                                                    </v-list-item-title>
+                                                    <v-list-item-subtitle class="mt-1 white--text">${{item.price}}
+                                                    </v-list-item-subtitle>
+                                                </v-list-item-content>
+                                                <v-list-item-action>
+                                                    <v-btn rounded @click="preCart(item)">
+                                                        <v-icon>mdi-cart-plus</v-icon>
+                                                        Agregar
+                                                    </v-btn>
+                                                </v-list-item-action>
+                                            </v-list-item>
+                                        </v-list>
+                                    </v-card-text>
+                                </div>
+                            </v-lazy>
+                        </v-card>
+                        <v-card class="subCard" ref="table" v-if="Object.keys(item.images).length===0" style="height: auto"
+                                elevation="2">
+                            <v-lazy :options="{threshold: .5}"
+                                    min-height="200" :transition="transition" v-model="isActive">
+                                <div>
+                                    <v-card-title>
+                                        <img class="imgCategory" src="https://api.tissini.app/img/products/not_found.jpg">
+                                    </v-card-title>
+                                    <v-card-text>
+                                        <v-list color="primary">
+                                            <v-list-item>
+                                                <v-list-item-content>
+                                                    <v-list-item-title style="margin-top: -10px!important;"
+                                                                       class="mt-1 mb-1 white--text font-weight-bold">
+                                                        {{item.name}}
+                                                    </v-list-item-title>
+                                                    <v-list-item-subtitle class="mt-1 white--text">${{item.price}}
+                                                    </v-list-item-subtitle>
+                                                </v-list-item-content>
+                                                <v-list-item-action>
+                                                    <v-btn rounded @click="preCart(item)">
+                                                        <v-icon>mdi-cart-plus</v-icon>
+                                                        Agregar
+                                                    </v-btn>
+                                                </v-list-item-action>
+                                            </v-list-item>
+                                        </v-list>
+                                    </v-card-text>
+                                </div>
+                            </v-lazy>
+                        </v-card>
+                    </div>
+
                 </div>
                 <v-dialog v-model="selectVariant" persistent>
                     <v-card>
@@ -206,9 +242,9 @@
                 }
                 this.$store.commit("quantityMap");
                 this.$store.commit("shake", {ir: 'cartBadge'});
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.$store.commit("clearShake");
-                },1000);
+                }, 1000);
                 this.closeClear();
             },
             closeClear() {
