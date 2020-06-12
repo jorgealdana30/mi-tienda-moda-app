@@ -205,6 +205,7 @@
                     localStorage.setItem('cart', JSON.stringify(json));
                 }
                 this.$store.commit("quantityMap");
+                this.$store.commit("cartBadge", 'cartBadge');
                 this.closeClear();
             },
             closeClear() {

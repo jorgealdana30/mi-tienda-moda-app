@@ -13,11 +13,14 @@
 <script>
     import Toolbar from "./Toolbar";
     import BottomMenu from "./BottomMenu";
-
+    import vuex from 'vuex'
     export default {
         name: "Dashboard",
         components: {
             Toolbar, BottomMenu
+        },
+        mounted() {
+            this.$store.commit("quantityMap")
         }
     }
 </script>

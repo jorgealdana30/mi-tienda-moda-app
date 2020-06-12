@@ -7,7 +7,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         tabIndex: 0,
-        quantity: 0
+        quantity: 0,
+        cartBadgeAnim: ''
     },
     mutations: {
         moveTab(state, payload) {
@@ -25,6 +26,9 @@ export default new Vuex.Store({
                 }
             }
             state.quantity = suma;
+        },
+        shake(state, payload){
+            state.cartBadge = payload
         }
     },
     actions: {},

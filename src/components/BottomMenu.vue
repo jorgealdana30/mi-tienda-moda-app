@@ -16,7 +16,7 @@
             <v-icon>mdi-badge-account-outline</v-icon>
         </v-btn>
 
-        <v-btn :to="{name: 'Cart'}">
+        <v-btn :to="{name: 'Cart'}" :class="cartBadgeAnim">
             <span class="montserrat">Carrito</span>
             <v-badge
                     :content="quantity"
@@ -38,14 +38,14 @@
         data() {
             return {
                 activeBtn: 0,
-                cart: []
+                cart: [],
             }
         },
         computed: {
-            ...Vuex.mapState(["tabIndex", "quantity"]),
+            ...Vuex.mapState(["tabIndex", "quantity", "cartBadgeAnim"]),
         },
         methods: {
-            ...Vuex.mapMutations(["moveTab", "quantityMap"]),
+            ...Vuex.mapMutations(["moveTab", "quantityMap", "shake"]),
         }
     }
 </script>
