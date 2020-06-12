@@ -182,6 +182,10 @@
                     localStorage.setItem('cart', JSON.stringify(json));
                 }
                 this.$store.commit("quantityMap");
+                this.$store.commit("shake", {ir: 'cartBadge'});
+                setTimeout(() => {
+                    this.$store.commit("clearShake");
+                }, 1000);
                 this.closeClear();
             },
             closeClear() {
