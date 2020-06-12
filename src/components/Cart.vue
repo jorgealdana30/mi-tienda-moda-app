@@ -143,7 +143,8 @@
                     }
                 }
                 this.cartEmpty = this.cart.length === 0;
-                localStorage.setItem('cart', JSON.stringify(this.cart))
+                localStorage.setItem('cart', JSON.stringify(this.cart));
+                this.$store.commit("quantityMap");
             },
             selectQuantity() {
                 this.enableQuantity = true;
