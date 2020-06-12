@@ -13,17 +13,25 @@
                                    max-width="10rem"></v-img>
                         </v-card-title>
                         <v-card-text class="flex-column d-flex mt-3">
-                            <span class="font-weight-bold" style="color: #f06292">{{items.name}}</span>
+                            <h3 class="font-weight-bold mb-2" style="color: #f06292">{{items.name}}</h3>
                             <span>SKU: <b>{{items.variant.sku}}</b></span>
                             <span>Talla: <b>{{items.variant.size}}</b></span>
                             <span>Cantidad: <b>{{items.quantity}}</b></span>
                             <span>Unidad: <b>${{items.price}}</b></span>
                             <h2 class="mt-1" style="color: #f06292">${{(items.price * items.quantity).toFixed(2)}}</h2>
-                            <v-btn text icon>
-                                <v-icon>
-
-                                </v-icon>
-                            </v-btn>
+                            <v-divider class="mt-2 mb-2"></v-divider>
+                            <div class="d-flex justify-space-around">
+                                <v-btn icon color="blue">
+                                    <v-icon>
+                                        mdi-pencil
+                                    </v-icon>
+                                </v-btn>
+                                <v-btn icon color="red" @click="deleteItems(items)">
+                                    <v-icon>
+                                        mdi-delete
+                                    </v-icon>
+                                </v-btn>
+                            </div>
                         </v-card-text>
                         <v-card-actions class="d-flex flex-column">
 
@@ -63,7 +71,16 @@
                 this.cartEmpty = true;
             }
         },
-        methods: {}
+        methods: {
+            deleteItems(item) {
+                for (let i in this.cart) {
+                    if (item.id === this.cart[i].id) {
+                        this.cart.splice(i);
+                    }
+                }
+                localStorage.setItem('cart', JSON.stringify(this.cart))
+            }
+        }
     }
 </script>
 
