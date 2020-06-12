@@ -116,19 +116,55 @@ input[type=number] {
     margin-left: 0 !important;
 }
 
-.carouselCategorias {
-
-}
-
 .buttonsLogOut {
     display: flex;
     flex-direction: column;
+}
+
+.imgCategory {
+    width: 23rem;
+}
+
+.cartPanel {
+    width: 100vw;
+    height: 40rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.cartBadge {
+    animation: shake 0.82s cubic-bezier(0.65, 0.05, 0.36, 1) both;;
+    transform: translate3d(0, 0, 0);
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }
 
 /*SmartPhones (S))*/
 @media only screen and (max-width: 320px) {
     .cardPrincipal {
         flex-direction: column;
+    }
+
+    .carouselCat {
+        height: 9rem !important;
     }
 
     .subCard {
@@ -138,7 +174,27 @@ input[type=number] {
 
     .buttonVerMas {
         left: 58vw !important;
-        top: -5vh;
+        top: -3rem;
+    }
+
+    .imgCategory {
+        width: 23rem;
+    }
+
+    .categoryCatalogueImg {
+        width: 18rem;
+    }
+
+    .cardCart {
+        width: 20rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
     }
 }
 
@@ -148,6 +204,10 @@ input[type=number] {
         flex-direction: column;
     }
 
+    .carouselCat {
+        height: 10.5rem !important;
+    }
+
     .subCard {
         width: 100vw;
         margin: 10px 1px 5px 1px;
@@ -155,7 +215,28 @@ input[type=number] {
 
     .buttonVerMas {
         left: 64vw !important;
-        top: -5vh;
+        top: -3rem;
+    }
+
+    .imgCategory {
+        width: 23rem;
+    }
+
+
+    .categoryCatalogueImg {
+        width: 22rem;
+    }
+
+    .cardCart {
+        width: 23rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
     }
 }
 
@@ -166,14 +247,38 @@ input[type=number] {
         flex-direction: column;
     }
 
+    .imgCategory {
+        width: 25rem;
+    }
+
     .subCard {
         width: 100vw;
         margin: 10px 1px 5px 1px;
     }
 
+    .carouselCat {
+        height: 12rem !important;
+    }
+
     .buttonVerMas {
         left: 68vw !important;
-        top: -5vh;
+        top: -3rem;
+    }
+
+    .categoryCatalogueImg {
+        width: 25rem;
+    }
+
+    .cardCart {
+        width: 26rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
     }
 }
 
@@ -181,11 +286,82 @@ input[type=number] {
 @media only screen and (min-device-width: 768px) and (max-width: 1023px) {
     .buttonVerMas {
         left: 82vw;
-        top: -5vh;
+    }
+
+    .imgCategory {
+        width: 25rem;
+        position: relative;
+        left: 2rem;
+    }
+    .carouselCat {
+        height: 23rem !important;
     }
 
     .imageBanner {
         width: 97vw !important;
+    }
+
+    .subCard {
+        width: 30rem;
+        margin: 10px 1px 5px 1px;
+    }
+
+    .buttonVerMas {
+        top: -3rem;
+    }
+
+    .cardPrincipal {
+        flex-direction: column;
+        align-items: center!important;
+        justify-content: center!important;
+    }
+
+    .buttonsLogOut {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .categoryCatalogueImg {
+        width: 28rem;
+    }
+
+    .cardCart {
+        width: 32rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
+    }
+
+    .contentCatalogo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/*Laptops (S)*/
+@media only screen and (min-device-width: 1024px) and (max-width: 1439px) {
+    .cardPrincipal {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .imgCategory {
+        width: 25rem;
+        position: relative;
+        left: 16rem;
+    }
+
+    .imgCategory {
+        width: 28rem;
+        position: relative;
+        left: 15rem;
     }
 
     .subCard {
@@ -193,60 +369,96 @@ input[type=number] {
         margin: 10px 1px 5px 1px;
     }
 
-    .cardPrincipal {
-        flex-direction: column;
-        align-content: center;
-        justify-content: center;
-    }
-
-    .buttonsLogOut {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-}
-
-/*Laptops (S)*/
-@media only screen and (min-device-width: 1024px) and (max-width: 1439px) {
-    .cardPrincipal {
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 24px !important;
-    }
-
-    .subCard {
-        width: 45vw;
-        margin: 1px 1px 5px 1px;
-    }
-
     .imageBanner {
         width: 97vw !important;
     }
 
     .buttonVerMas {
         left: 85vw;
-        top: -5vh;
+        top: -3rem;
+    }
+
+    .carouselCat {
+        height: 26rem !important;
     }
 
     .buttonsLogOut {
         flex-direction: row;
         justify-content: space-evenly;
+    }
+
+    .categoryCatalogueImg {
+        width: 30rem;
+        left: 14rem;
+        position: relative;
+    }
+
+    .cardCart {
+        width: 36rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        padding-top: 7px !important;
+    }
+    .contentCatalogo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 /*Laptops (L), HD, 4k*/
 @media screen and (min-width: 1440px) {
+    .contentCatalogo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .buttonVerMas {
-        left: 85vw;
-        top: -5vh;
+        left: 89vw;
+        top: -3rem;
+    }
+
+    .cardCart {
+        width: 40rem;
+    }
+
+    .subCard {
+        width: 75rem;
+    }
+    .imgCategory {
+        width: 28rem;
+        position: relative;
+        left: 23rem;
     }
 
     .cardPrincipal {
-        flex-direction: row;
-        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .imageBanner {
+        width: 97vw !important;
+    }
+
+    .carouselCat {
+        height: 35rem !important;
     }
 
     .buttonsLogOut {
         flex-direction: row;
         justify-content: space-evenly;
     }
+
+    .categoryCatalogueImg {
+        width: 30rem;
+        left: 22rem;
+        position: relative;
+    }
+
 }

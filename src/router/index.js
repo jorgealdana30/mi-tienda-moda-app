@@ -14,7 +14,7 @@ const routes = [
             redirect: '/'
         },
         {
-            path:'/',
+            path: '/',
             name: 'Login',
             component: Login
         },
@@ -26,17 +26,22 @@ const routes = [
                 {
                     path: "/categorias",
                     name: 'Categories',
-                    component: Categories
+                    component: Categories,
+                    meta: {breadCrumb: 'Categories'},
                 },
                 {
                     path: '/catalogo',
                     name: "Catalogue",
-                    component: Catalogue
+                    component: Catalogue,
+                    meta: {breadCrumb: 'Catalogue'},
+
 
                 }, {
                     path: '/carrito',
                     name: "Cart",
-                    component: Cart
+                    component: Cart,
+                    meta: {breadCrumb: 'Cart'},
+
                 }]
         }
     ]
