@@ -1,24 +1,17 @@
 # Inicialización del proyecto
 
-## Para realizar la instalación ejecute
+## Para realizar la instalación primero debe instalar los módulos
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Para iniciar el servidor del proyecto, digite en la terminal:
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Para compilar y enviar a producción:
 ```
 npm run build
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Proyecto realizado por Jorge Aldana para prueba ténica en Tissini.
