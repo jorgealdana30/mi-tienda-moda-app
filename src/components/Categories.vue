@@ -15,7 +15,7 @@
                     <v-carousel cycle continuous height="auto" hide-delimiter-background hide-delimiters
                                 show-arrows-on-hover>
                         <v-carousel-item v-for="item in categories" @click="sendCategory(item)">
-                            <v-img :src="'https://api.tissini.app'+ item.image"
+                            <v-img :src="'https://api.tissini.app'+ item.image + '?vuetify-preload'"
                                    max-width="90vw"></v-img>
                         </v-carousel-item>
                     </v-carousel>
@@ -34,7 +34,7 @@
                             show-arrows-on-hover
                     >
                         <v-carousel-item v-for="section in items.products" @click="sendCategory(section)">
-                            <v-img :src="'https://api.tissini.app/'+section.image.url" width="25rem"
+                            <v-img :src="'https://api.tissini.app/'+section.image.url+'?vuetify-preload'" width="25rem"
                                    style="margin: 0 auto" height="26rem"></v-img>
                             <v-divider></v-divider>
                             <v-list color="primary">

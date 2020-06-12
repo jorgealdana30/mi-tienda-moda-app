@@ -16,7 +16,7 @@
                     <v-carousel height="auto" hide-delimiters hide-delimiter-background
                                 show-arrows-on-hover>
                         <v-carousel-item v-for="item in category.categories">
-                            <v-img :src="'https://api.tissini.app'+ item.image"
+                            <v-img :src="'https://api.tissini.app'+ item.image +'?vuetify-preload'"
                                    max-width="90vw"></v-img>
                         </v-carousel-item>
                     </v-carousel>
