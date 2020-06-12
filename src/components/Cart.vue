@@ -7,13 +7,27 @@
             </div>
             <div v-if="!cartEmpty">
                 <div v-for="items in cart">
-                    <v-card class="d-flex flex-row mt-2 mb-2" width="100vw">
+                    <v-card class="d-flex flex-row mt-2 mb-2" width="23rem">
                         <v-card-title>
-                            <v-img style="margin-left: 0" :src="'https://api.tissini.app'+items.images[0].url" max-width="10rem"></v-img>
+                            <v-img style="margin-left: 0" :src="'https://api.tissini.app'+items.images[0].url"
+                                   max-width="10rem"></v-img>
                         </v-card-title>
-                        <v-card-text>
-                            <span class="black--text">{{items.name}}</span>
+                        <v-card-text class="flex-column d-flex mt-3">
+                            <span class="font-weight-bold" style="color: #f06292">{{items.name}}</span>
+                            <span>SKU: <b>{{items.variant.sku}}</b></span>
+                            <span>Talla: <b>{{items.variant.size}}</b></span>
+                            <span>Cantidad: <b>{{items.quantity}}</b></span>
+                            <span>Unidad: <b>${{items.price}}</b></span>
+                            <h2 class="mt-1" style="color: #f06292">${{(items.price * items.quantity).toFixed(2)}}</h2>
+                            <v-btn text icon>
+                                <v-icon>
+
+                                </v-icon>
+                            </v-btn>
                         </v-card-text>
+                        <v-card-actions class="d-flex flex-column">
+
+                        </v-card-actions>
                     </v-card>
                 </div>
             </div>
@@ -42,10 +56,10 @@
             }
         },
         activated() {
-            if(localStorage.getItem('cart')){
+            if (localStorage.getItem('cart')) {
                 this.cart = JSON.parse(localStorage.getItem('cart'));
                 this.cartEmpty = false;
-            }else{
+            } else {
                 this.cartEmpty = true;
             }
         },
