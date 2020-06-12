@@ -26,7 +26,8 @@
                 </v-card>
                 <div v-infinite-scroll="loadProducts" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
                     <div v-for="item in products">
-                        <v-card class="subCard" ref="table" v-if="Object.keys(item.images).length>1" style="height: auto"
+                        <v-card class="subCard" ref="table" v-if="Object.keys(item.images).length>1"
+                                style="height: auto"
                                 elevation="2">
                             <v-lazy :options="{threshold: .5}"
                                     min-height="200" :transition="transition" v-model="isActive">
@@ -62,13 +63,15 @@
                                 </div>
                             </v-lazy>
                         </v-card>
-                        <v-card class="subCard" ref="table" v-if="Object.keys(item.images).length===0" style="height: auto"
+                        <v-card class="subCard" ref="table" v-if="Object.keys(item.images).length===0"
+                                style="height: auto"
                                 elevation="2">
                             <v-lazy :options="{threshold: .5}"
                                     min-height="200" :transition="transition" v-model="isActive">
                                 <div>
                                     <v-card-title>
-                                        <img class="imgCategory" src="https://api.tissini.app/img/products/not_found.jpg">
+                                        <img class="imgCategory"
+                                             src="https://api.tissini.app/img/products/not_found.jpg">
                                     </v-card-title>
                                     <v-card-text>
                                         <v-list color="primary">
@@ -94,8 +97,22 @@
                             </v-lazy>
                         </v-card>
                     </div>
-
                 </div>
+                <v-dialog
+                        v-model="busy"
+                        persistent
+                        width="300"
+                >
+                    <v-card
+                            color="primary"
+                            dark
+                    >
+                        <v-card-text class="d-flex align-center flex-column">
+                            <span class="mt-3">Cargando, por favor espere...</span>
+                            <v-img src="../assets/loader.126f8cbb.gif" width="10vw"></v-img>
+                        </v-card-text>
+                    </v-card>
+                </v-dialog>
                 <v-dialog v-model="selectVariant" persistent>
                     <v-card>
                         <v-card-title class="mb-1 pb-4" style="background-color: #f06292">
