@@ -7,7 +7,7 @@
             </div>
             <div v-if="!cartEmpty">
                 <div v-for="items in cart">
-                    <v-card class="d-flex flex-row mt-2 mb-2" width="23rem">
+                    <v-card class="d-flex flex-row mt-2 mb-2 cardCart">
                         <v-card-title>
                             <v-img style="margin-left: 0" :src="'https://api.tissini.app'+items.images[0].url"
                                    max-width="10rem"></v-img>
@@ -36,8 +36,8 @@
                     </v-card>
                 </div>
                 <v-card class="mb-2">
-                    <h2 class="montserrat d-flex justify-end">Subtotal: <span class="ml-2 mr-4" style="color: #f06292;">${{subtotal.toFixed(2)}}</span>
-                    </h2>
+                    <h3 class="montserrat d-flex justify-end">Subtotal: <span class="ml-2 mr-4" style="color: #f06292;">${{subtotal.toFixed(2)}}</span>
+                    </h3>
                 </v-card>
                 <v-dialog v-model="selectVariant" persistent>
                     <v-card>

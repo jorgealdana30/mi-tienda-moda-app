@@ -8,7 +8,7 @@
             </v-btn>
         </v-banner>
         <v-card color="primary" class="d-flex flex-wrap cardPrincipal">
-            <v-card class="subCard" style="height: auto; width: 100vw" elevation="2">
+            <v-card class="subCard" style="height: auto;" elevation="2">
                 <v-card-title>
                     <span class="montserrat">LINEAS</span>
                 </v-card-title>
@@ -16,7 +16,7 @@
                     <v-carousel cycle continuous height="auto" hide-delimiter-background hide-delimiters
                                 show-arrows-on-hover>
                         <v-carousel-item v-for="item in categories" @click="sendCategory(item)">
-                            <img class="imgCategory" :src="'https://api.tissini.app'+ item.image">
+                            <img class="categoryCatalogueImg" :src="'https://api.tissini.app'+ item.image">
                         </v-carousel-item>
                     </v-carousel>
                 </v-card-text>
