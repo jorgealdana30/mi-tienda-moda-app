@@ -48,12 +48,6 @@
                                         </v-list-item-subtitle>
                                         <v-list-item-subtitle class="mt-1">${{section.price}}</v-list-item-subtitle>
                                     </v-list-item-content>
-                                    <v-list-item-action>
-                                        <v-btn rounded color="white" class="black--text">
-                                            <v-icon>mdi-cart-plus</v-icon>
-                                            Agregar
-                                        </v-btn>
-                                    </v-list-item-action>
                                 </v-list-item>
                             </v-list>
                         </v-carousel-item>

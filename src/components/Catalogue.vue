@@ -13,7 +13,7 @@
                     <span class="montserrat">CATEGORÍAS</span>
                 </v-card-title>
                 <v-card-text>
-                    <v-carousel cycle continuous height="auto" hide-delimiters hide-delimiter-background
+                    <v-carousel height="auto" hide-delimiters hide-delimiter-background
                                 show-arrows-on-hover>
                         <v-carousel-item v-for="item in category.categories">
                             <v-img :src="'https://api.tissini.app'+ item.image"
@@ -46,7 +46,7 @@
                                             </v-list-item-subtitle>
                                         </v-list-item-content>
                                         <v-list-item-action>
-                                            <v-btn rounded @click="saveToCart(item)">
+                                            <v-btn rounded @click="preCart(item)">
                                                 <v-icon>mdi-cart-plus</v-icon>
                                                 Agregar
                                             </v-btn>
@@ -75,20 +75,20 @@
                             <span class="montserrat font-weight-bold"
                                   style="color: #f06292;">Selecciona el Tamaño</span>
                             <div class="d-flex justify-center flex-row">
-                                <v-select :items="variants" v-model="sizeSelected" v-on:change="selectQuantity">
+                                <v-select :items="variantsList" v-model="sizeSelected" v-on:change="selectQuantity">
                                 </v-select>
                             </div>
                         </div>
                         <div v-if="enableQuantity">
                             <span class="montserrat font-weight-bold"
                                   style="color: #f06292;">Selecciona la cantidad</span>
-                            <v-select :items="quantity">
+                            <v-select :items="quantityList" v-model="quantitySelected" v-on:change="processProduct">
                             </v-select>
                         </div>
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary">
+                        <v-btn color="primary" @click="saveToCart">
                             Agregar
                         </v-btn>
                     </v-card-actions>
@@ -116,20 +116,19 @@
                 category: [],
                 busy: false,
                 products: [],
-                productsTemp: [],
                 isActive: true,
                 categoryName: '',
                 loading: true,
                 transition: 'fade-transition',
-                size: '',
                 hasCategory: true,
                 selectVariant: false,
-                variants: [],
-                quantity: [],
+                variantsList: [],
+                quantityList: [],
                 enableQuantity: false,
                 productSelected: null,
                 sizeSelected: '',
-                limit: 10,
+                quantitySelected: '',
+                limit: 5,
                 busy: false
             }
         },
@@ -138,18 +137,9 @@
             this.loadProducts();
         },
         deactivated() {
-            this.products = []
+            this.products = [];
         },
         methods: {
-            infinity() {
-
-                /*setTimeout(() => {
-                    for (var i = this.products.lastIndex; i < j; i++) {
-                        this.productsTemp.push({ name: count++ });
-                    }
-                    this.busy = false;
-                }, 1000);*/
-            },
             loadProducts() {
                 let id = '';
                 this.busy = true;
@@ -170,41 +160,53 @@
                     }
                 );
             },
-            saveToCart(product) {
+            preCart(product) {
                 this.selectVariant = true;
-                this.productSelected = product.variants;
-                for (let i in product.variants) {
-                    this.variants.push(product.variants[i].size);
+                this.productSelected = product;
+                for (let i in this.productSelected.variants) {
+                    this.variantsList.push(this.productSelected.variants[i].size);
                 }
-
-                /*if (localStorage.getItem('cart')) {
-                    let json = [];
-                    json = JSON.parse(localStorage.getItem('cart'));
-                    json.push(product);
-                    localStorage.setItem('cart', JSON.stringify(json));
-                } else {
-                    let json = [];
-                    json.push(product);
-                    localStorage.setItem('cart', JSON.stringify(json));
-                }*/
             },
             selectQuantity() {
                 this.enableQuantity = true;
-                for (let i in this.productSelected) {
-                    if (this.sizeSelected === this.productSelected[i].size) {
-                        for (let j = 1; j <= this.productSelected[i].quantity; j++) {
-                            this.quantity.push(j)
+                for (let i in this.productSelected.variants) {
+                    if (this.sizeSelected === this.productSelected.variants[i].size) {
+                        for (let j = 1; j <= this.productSelected.variants[i].quantity; j++) {
+                            this.quantityList.push(j)
                         }
                     }
                 }
             },
+            processProduct() {
+                let productTemp = this.productSelected;
+                for (let i in productTemp.variants) {
+                    if (this.sizeSelected === productTemp.variants[i].size) {
+                        productTemp['quantity'] = this.quantitySelected;
+                        productTemp['variant'] = productTemp.variants[i];
+                    }
+                }
+            },
+            saveToCart() {
+                if (localStorage.getItem('cart')) {
+                    let json = [];
+                    json = JSON.parse(localStorage.getItem('cart'));
+                    json.push(this.productSelected);
+                    localStorage.setItem('cart', JSON.stringify(json));
+                } else {
+                    let json = [];
+                    json.push(this.productSelected);
+                    localStorage.setItem('cart', JSON.stringify(json));
+                }
+                this.closeClear();
+            },
             closeClear() {
                 this.selectVariant = false;
                 this.enableQuantity = false;
+                this.quantitySelected = null;
                 this.productSelected = null;
                 this.sizeSelected = '';
-                this.quantity = [];
-                this.variants = [];
+                this.quantityList = [];
+                this.variantsList = [];
             }
         }
     }
