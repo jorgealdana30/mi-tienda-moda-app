@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <div class="d-flex flex-row align-center white">
+        <div class="searchBar">
             <v-btn icon color="primary" class="ml-2" :to="{name: 'Categories'}">
                 <v-icon>
                     mdi-arrow-left

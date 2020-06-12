@@ -1,8 +1,8 @@
 <template>
     <div id="app">
         <v-card class="cardPrincipal banner mb-0 cartPanel" height="auto" color="primary" flat>
-            <div v-if="cartEmpty" style="background: white; width: 100%">
-                <v-img src="../assets/empty-cart.1bfda269.png"></v-img>
+            <div v-if="cartEmpty" style="background: white; width: 100%" class="d-flex align-center flex-column">
+                <v-img src="../assets/empty-cart.1bfda269.png" width="28rem"></v-img>
                 <h3 class="montserrat text-center" style="color: #f06292">Carrito vacío, Vamos de compras!</h3>
             </div>
             <div v-if="!cartEmpty">

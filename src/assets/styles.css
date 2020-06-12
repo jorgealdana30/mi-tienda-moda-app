@@ -188,6 +188,14 @@ input[type=number] {
     .cardCart {
         width: 20rem;
     }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
+    }
 }
 
 /* Smartphones (M) ----------- */
@@ -210,11 +218,25 @@ input[type=number] {
         top: -3rem;
     }
 
+    .imgCategory {
+        width: 23rem;
+    }
+
+
     .categoryCatalogueImg {
         width: 22rem;
     }
+
     .cardCart {
         width: 23rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
     }
 }
 
@@ -223,6 +245,10 @@ input[type=number] {
 @media only screen and (min-width: 425px) and (max-width: 767px) {
     .cardPrincipal {
         flex-direction: column;
+    }
+
+    .imgCategory {
+        width: 25rem;
     }
 
     .subCard {
@@ -246,6 +272,14 @@ input[type=number] {
     .cardCart {
         width: 26rem;
     }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
+    }
 }
 
 /*iPads and tablets*/
@@ -254,6 +288,11 @@ input[type=number] {
         left: 82vw;
     }
 
+    .imgCategory {
+        width: 25rem;
+        position: relative;
+        left: 2rem;
+    }
     .carouselCat {
         height: 23rem !important;
     }
@@ -263,7 +302,7 @@ input[type=number] {
     }
 
     .subCard {
-        width: 95vw;
+        width: 30rem;
         margin: 10px 1px 5px 1px;
     }
 
@@ -273,8 +312,8 @@ input[type=number] {
 
     .cardPrincipal {
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        align-items: center!important;
+        justify-content: center!important;
     }
 
     .buttonsLogOut {
@@ -283,12 +322,25 @@ input[type=number] {
     }
 
     .categoryCatalogueImg {
-        width: 30rem;
-        left: 8rem;
-        position: relative;
+        width: 28rem;
     }
+
     .cardCart {
         width: 32rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        margin-top: 4px !important;
+    }
+
+    .contentCatalogo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -297,12 +349,24 @@ input[type=number] {
     .cardPrincipal {
         flex-direction: column;
         align-items: center;
-        padding: 24px !important;
+        justify-content: center;
+    }
+
+    .imgCategory {
+        width: 25rem;
+        position: relative;
+        left: 16rem;
+    }
+
+    .imgCategory {
+        width: 28rem;
+        position: relative;
+        left: 15rem;
     }
 
     .subCard {
-        width: 55rem;
-        margin: 1px 1px 5px 1px;
+        width: 95vw;
+        margin: 10px 1px 5px 1px;
     }
 
     .imageBanner {
@@ -325,16 +389,36 @@ input[type=number] {
 
     .categoryCatalogueImg {
         width: 30rem;
-        left: 12rem;
+        left: 14rem;
         position: relative;
     }
+
     .cardCart {
         width: 36rem;
+    }
+
+    .searchBar {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        background: white;
+        padding-top: 7px !important;
+    }
+    .contentCatalogo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 /*Laptops (L), HD, 4k*/
 @media screen and (min-width: 1440px) {
+    .contentCatalogo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
     .buttonVerMas {
         left: 89vw;
         top: -3rem;
@@ -344,8 +428,13 @@ input[type=number] {
         width: 40rem;
     }
 
-    .subCard{
+    .subCard {
         width: 75rem;
+    }
+    .imgCategory {
+        width: 28rem;
+        position: relative;
+        left: 23rem;
     }
 
     .cardPrincipal {
@@ -368,7 +457,7 @@ input[type=number] {
 
     .categoryCatalogueImg {
         width: 30rem;
-        left: 27rem;
+        left: 22rem;
         position: relative;
     }
 
