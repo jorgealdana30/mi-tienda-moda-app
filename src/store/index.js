@@ -13,7 +13,6 @@ export default new Vuex.Store({
     mutations: {
         moveTab(state, payload) {
             state.tabIndex = payload.number;
-            //router.push({name: 'Board', path: payload.url}).then(r => {})
         },
         quantityMap(state){
             let suma = 0;
@@ -28,7 +27,10 @@ export default new Vuex.Store({
             state.quantity = suma;
         },
         shake(state, payload){
-            state.cartBadge = payload
+            state.cartBadgeAnim = payload.ir
+        },
+        clearShake(state){
+            state.cartBadgeAnim = ''
         }
     },
     actions: {},
