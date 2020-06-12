@@ -204,6 +204,7 @@
                     json.push(this.productSelected);
                     localStorage.setItem('cart', JSON.stringify(json));
                 }
+                this.$store.commit("quantityMap");
                 this.closeClear();
             },
             closeClear() {

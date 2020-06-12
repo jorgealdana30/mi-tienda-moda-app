@@ -83,7 +83,7 @@
 <script>
     import Toolbar from "./Toolbar";
     import BottomMenu from "./BottomMenu";
-
+    import vuex from 'vuex'
     export default {
         name: "Cart",
         components: {
@@ -130,7 +130,6 @@
         },
         methods: {
             preCart(product) {
-                console.log(product)
                 this.selectVariant = true;
                 this.productSelected = product;
                 for (let i in this.productSelected.variants) {
@@ -169,8 +168,8 @@
                 if (localStorage.getItem('cart')) {
                     let json = [];
                     json = JSON.parse(localStorage.getItem('cart'));
-                    for (let i in json){
-                        if(json[i].id === this.productSelected.id){
+                    for (let i in json) {
+                        if (json[i].id === this.productSelected.id) {
                             json.splice(i);
                         }
                     }
@@ -181,6 +180,7 @@
                     json.push(this.productSelected);
                     localStorage.setItem('cart', JSON.stringify(json));
                 }
+                this.$store.commit("quantityMap");
                 this.closeClear();
             },
             closeClear() {
