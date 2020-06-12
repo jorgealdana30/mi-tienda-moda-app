@@ -4,7 +4,8 @@
             <v-img src="https://mitienda.moda/img/productos-de-entrega-inmediata.e07d1e57.png"
                    class="ma-0 imageBanner align-end">
             </v-img>
-            <v-btn color="black" class="white--text mb-2 buttonVerMas" @click="sendMultivendor" rounded>Ver Más</v-btn>
+            <v-btn color="black" class="white--text mb-2 buttonVerMas" @click="sendMultivendor" rounded>Ver Más
+            </v-btn>
         </v-banner>
         <v-card color="primary" class="d-flex flex-wrap cardPrincipal">
             <v-card class="subCard" style="height: auto; width: 100vw" elevation="2">
@@ -15,8 +16,7 @@
                     <v-carousel cycle continuous height="auto" hide-delimiter-background hide-delimiters
                                 show-arrows-on-hover>
                         <v-carousel-item v-for="item in categories" @click="sendCategory(item)">
-                            <v-img :src="'https://api.tissini.app'+ item.image + '?vuetify-preload'"
-                                   max-width="90vw"></v-img>
+                            <img class="imgCategory" :src="'https://api.tissini.app'+ item.image">
                         </v-carousel-item>
                     </v-carousel>
                 </v-card-text>
@@ -34,7 +34,8 @@
                             show-arrows-on-hover
                     >
                         <v-carousel-item v-for="section in items.products" @click="sendCategory(section)">
-                            <v-img :src="'https://api.tissini.app/'+section.image.url+'?vuetify-preload'" width="25rem"
+                            <v-img :src="'https://api.tissini.app/'+section.image.url+'?vuetify-preload'"
+                                   width="25rem"
                                    style="margin: 0 auto" height="26rem"></v-img>
                             <v-divider></v-divider>
                             <v-list color="primary">

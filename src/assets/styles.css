@@ -121,6 +121,10 @@ input[type=number] {
     flex-direction: column;
 }
 
+.imgCategory{
+    width: 23rem;
+}
+
 .cartPanel {
     width: 100vw;
     height: 40rem;

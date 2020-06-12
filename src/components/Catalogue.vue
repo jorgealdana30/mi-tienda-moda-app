@@ -16,8 +16,8 @@
                     <v-carousel height="auto" hide-delimiters hide-delimiter-background
                                 show-arrows-on-hover>
                         <v-carousel-item v-for="item in category.categories">
-                            <v-img :src="'https://api.tissini.app'+ item.image +'?vuetify-preload'"
-                                   max-width="90vw"></v-img>
+                            <img :src="'https://api.tissini.app'+ item.image"
+                                   max-width="90vw">
                         </v-carousel-item>
                     </v-carousel>
                 </v-card-text>
@@ -30,7 +30,7 @@
                             <v-card-title>
                                 <v-carousel height="auto" :show-arrows="Object.keys(item.images).length>1">
                                     <v-carousel-item v-for="photos in item.images">
-                                        <v-img :src="'https://api.tissini.app/'+ photos.url"></v-img>
+                                        <img class="imgCategory" :src="'https://api.tissini.app/'+ photos.url">
                                     </v-carousel-item>
                                 </v-carousel>
                             </v-card-title>
@@ -138,6 +138,8 @@
         },
         deactivated() {
             this.products = [];
+            this.busy = false;
+            this.closeClear()
         },
         methods: {
             loadProducts() {
