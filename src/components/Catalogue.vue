@@ -22,10 +22,10 @@
                     </v-carousel>
                 </v-card-text>
             </v-card>
-            <v-card class="subCard" ref="table" v-for="item in products" style="height: auto" elevation="2">
-                <v-lazy :options="{threshold: .5}"
-                        min-height="200" :transition="transition" v-model="isActive">
-                    <v-skeleton-loader :transition="transition" :loading="loading" type="card">
+            <div v-infinite-scroll="loadProducts" infinite-scroll-disabled="busy" infinite-scroll-distance="limit">
+                <v-card class="subCard" ref="table" v-for="item in products" style="height: auto" elevation="2">
+                    <v-lazy :options="{threshold: .5}"
+                            min-height="200" :transition="transition" v-model="isActive">
                         <div>
                             <v-card-title>
                                 <v-carousel height="auto" :show-arrows="Object.keys(item.images).length>1">
@@ -55,13 +55,13 @@
                                 </v-list>
                             </v-card-text>
                         </div>
-                    </v-skeleton-loader>
-                </v-lazy>
-            </v-card>
+                    </v-lazy>
+                </v-card>
+            </div>
             <v-dialog v-model="selectVariant" persistent>
                 <v-card>
                     <v-card-title class="mb-1 pb-4" style="background-color: #f06292">
-                        <v-btn icon text @click="selectVariant = !selectVariant">
+                        <v-btn icon text @click="closeClear">
                             <v-icon color="white">
                                 mdi-close
                             </v-icon>
@@ -72,18 +72,26 @@
                     </v-card-title>
                     <v-card-text>
                         <div class="d-flex flex-column">
-                            <span class="montserrat font-weight-bold" style="color: #f06292;">Selecciona el Tamaño</span>
+                            <span class="montserrat font-weight-bold"
+                                  style="color: #f06292;">Selecciona el Tamaño</span>
                             <div class="d-flex justify-center flex-row">
-                                <v-select :items="variants">
+                                <v-select :items="variants" v-model="sizeSelected" v-on:change="selectQuantity">
                                 </v-select>
                             </div>
                         </div>
-                        <div>
-                            <span class="montserrat font-weight-bold" style="color: #f06292;">Selecciona la cantidad</span>
-                            <v-select :items="selectItems">
+                        <div v-if="enableQuantity">
+                            <span class="montserrat font-weight-bold"
+                                  style="color: #f06292;">Selecciona la cantidad</span>
+                            <v-select :items="quantity">
                             </v-select>
                         </div>
                     </v-card-text>
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn color="primary">
+                            Agregar
+                        </v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-dialog>
         </v-card>
@@ -95,16 +103,20 @@
     import BottomMenu from "./BottomMenu";
     import Autocomplete from "./Autocomplete";
     import axios from 'axios'
+    import infiniteScroll from 'vue-infinite-scroll'
 
     export default {
         name: "Catalogue",
         components: {
             Toolbar, BottomMenu, Autocomplete
         },
+        directives: {infiniteScroll},
         data() {
             return {
                 category: [],
+                busy: false,
                 products: [],
+                productsTemp: [],
                 isActive: true,
                 categoryName: '',
                 loading: true,
@@ -113,8 +125,12 @@
                 hasCategory: true,
                 selectVariant: false,
                 variants: [],
-                cantidad: 0,
-                productSelected: null
+                quantity: [],
+                enableQuantity: false,
+                productSelected: null,
+                sizeSelected: '',
+                limit: 10,
+                busy: false
             }
         },
         activated() {
@@ -124,20 +140,19 @@
         deactivated() {
             this.products = []
         },
-        computed:{
-            selectItems(){
-                let json = [];
-                for (let i in this.cantidad){
-                    json.push(i)
-                }
-                console.log(json)
-                return json
-            }
-        },
-
         methods: {
+            infinity() {
+
+                /*setTimeout(() => {
+                    for (var i = this.products.lastIndex; i < j; i++) {
+                        this.productsTemp.push({ name: count++ });
+                    }
+                    this.busy = false;
+                }, 1000);*/
+            },
             loadProducts() {
                 let id = '';
+                this.busy = true;
                 if (this.category.hasOwnProperty('category_id')) {
                     id = this.category['category_id'];
                     this.hasCategory = false
@@ -146,16 +161,22 @@
                     this.hasCategory = true
                 }
                 axios.get('https://api.tissini.app/api/v2/categories/' + id + '/products').then(response => {
-                        this.products = response.data.products;
-                        this.loading = false
+                        const append = response.data.products.slice(
+                            this.products.length,
+                            this.products.length + this.limit
+                        );
+                        this.products = this.products.concat(append);
+                        this.busy = false;
                     }
                 );
             },
             saveToCart(product) {
                 this.selectVariant = true;
-                for(let i in product.variants){
+                this.productSelected = product.variants;
+                for (let i in product.variants) {
                     this.variants.push(product.variants[i].size);
                 }
+
                 /*if (localStorage.getItem('cart')) {
                     let json = [];
                     json = JSON.parse(localStorage.getItem('cart'));
@@ -167,6 +188,24 @@
                     localStorage.setItem('cart', JSON.stringify(json));
                 }*/
             },
+            selectQuantity() {
+                this.enableQuantity = true;
+                for (let i in this.productSelected) {
+                    if (this.sizeSelected === this.productSelected[i].size) {
+                        for (let j = 1; j <= this.productSelected[i].quantity; j++) {
+                            this.quantity.push(j)
+                        }
+                    }
+                }
+            },
+            closeClear() {
+                this.selectVariant = false;
+                this.enableQuantity = false;
+                this.productSelected = null;
+                this.sizeSelected = '';
+                this.quantity = [];
+                this.variants = [];
+            }
         }
     }
 </script>
